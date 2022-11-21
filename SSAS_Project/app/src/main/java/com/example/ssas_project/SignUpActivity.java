@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText edit_firstname, edit_lastname, edit_username, edit_password, edit_email, edit_confirm_password;
-    private Button edit_register;
+    private Button edit_register, edit_backbutton;
     private LoginDatabase LoginDatabase;
 
     @Override
@@ -31,9 +31,19 @@ public class SignUpActivity extends AppCompatActivity {
         edit_confirm_password   = findViewById(R.id.Register_confirm_password);
         edit_email              = findViewById(R.id.Register_email);
         edit_register           = findViewById(R.id.Register_button);
+        edit_backbutton         = findViewById(R.id.Register_backbutton);
 
         //Invoke the database
         LoginDatabase = new LoginDatabase(this);
+
+        //Set Listener for the Backbutton
+        edit_backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Create Function to listen to the Register Button
         edit_register.setOnClickListener(new View.OnClickListener() {
