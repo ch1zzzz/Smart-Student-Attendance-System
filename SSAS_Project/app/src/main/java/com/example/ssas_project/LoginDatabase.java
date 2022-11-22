@@ -27,7 +27,7 @@ public class LoginDatabase extends SQLiteOpenHelper {
         project_database.execSQL("Drop Table If Exists " +login_table);
         onCreate(project_database);
     }
-
+    //Insert user profile
     public Boolean insertData(String username, String password, String first_name, String last_name, String email_addr){
         SQLiteDatabase project_database = this.getWritableDatabase();
 
@@ -43,6 +43,17 @@ public class LoginDatabase extends SQLiteOpenHelper {
         return true;
     }
 
+    public Boolean update_username_password(String username, String password ){
+        SQLiteDatabase project_database = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+
+        project_database.update(login_table, contentValues, "username = ?", new String[]{username});
+        return true;
+    }
+
+    //Check username
     public Boolean check_username(String username){
         SQLiteDatabase project_database = this.getWritableDatabase();
         Cursor cursor = project_database.rawQuery("Select * from " +login_table+ " where username = ?", new String[]{username});
@@ -55,6 +66,7 @@ public class LoginDatabase extends SQLiteOpenHelper {
         }
     }
 
+    //Check username and password
     public Boolean check_username_password(String username, String password){
         SQLiteDatabase project_database = this.getWritableDatabase();
         Cursor cursor = project_database.rawQuery("Select * from " +login_table+ " where username = ? and password = ?", new String[]{username, password});
@@ -66,4 +78,10 @@ public class LoginDatabase extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
+
+
+
+
 }

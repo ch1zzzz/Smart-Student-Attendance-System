@@ -35,5 +35,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Click listener to the forgot pasword icon
+        edit_recover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecoverActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
