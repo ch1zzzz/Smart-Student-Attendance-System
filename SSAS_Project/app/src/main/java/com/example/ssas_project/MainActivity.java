@@ -9,8 +9,12 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.example.ssas_project.database.DAO;
+import com.example.ssas_project.database.MyDAO;
+
 public class MainActivity extends AppCompatActivity {
 
+    private DAO myDAO;
     private EditText edit_username, edit_password;
     private TextView edit_recover, edit_register;
     private Button edit_login;
@@ -20,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialize DAO
+        myDAO = new MyDAO(this);
+        myDAO.insert();
         //Initialize variables with the layout ID
         edit_username = findViewById(R.id.Login_username);
         edit_password = findViewById(R.id.Login_password);
