@@ -1,8 +1,6 @@
 package com.example.ssas_project.entity;
 
-enum StudentStatus{
-    freshman, sophomore, junior, senior, master, doctor
-}
+import com.example.ssas_project.entity.Types.StudentStatus;
 
 public class Student {
 
@@ -18,6 +16,7 @@ public class Student {
         this.email = email;
         this.status = status;
         this.payment_info = payment_info;
+        System.out.println(status.toString());
     }
 
     public int getId() {

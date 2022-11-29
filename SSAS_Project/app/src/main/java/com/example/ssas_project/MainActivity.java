@@ -11,6 +11,10 @@ import android.widget.Button;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
+import com.example.ssas_project.entity.Student;
+import com.example.ssas_project.entity.Types;
+
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SQLiteStudioService.instance().start(this);
 
         //Initialize DAO
         myDAO = new MyDAO(this);
-        myDAO.insert();
+        myDAO.test();
+
         //Initialize variables with the layout ID
         edit_username = findViewById(R.id.Login_username);
         edit_password = findViewById(R.id.Login_password);
