@@ -64,4 +64,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Constants.TABLE_SCHEDULE);
         onCreate(db);
     }
+
+    @Override
+    public void onOpen(SQLiteDatabase database) {
+        super.onOpen(database);
+        if (!database.isReadOnly()) {
+            // Enable foreign key constraints
+            database.execSQL("PRAGMA foreign_keys=ON;");
+        }
+    }
 }

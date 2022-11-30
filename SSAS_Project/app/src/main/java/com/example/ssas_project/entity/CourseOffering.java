@@ -6,17 +6,15 @@ import java.util.List;
 public class CourseOffering {
 
     private int id;
-    private Course course;
+    private int course_id;
     private int studentsNum;
     private String classroom;
-    private List<Date> dateList;
 
-    public CourseOffering(int id, Course course, int studentsNum, String classroom, List<Date> dateList) {
+    public CourseOffering(int id, int course_id, int studentsNum, String classroom) {
         this.id = id;
-        this.course = course;
+        this.course_id = course_id;
         this.studentsNum = studentsNum;
         this.classroom = classroom;
-        this.dateList = dateList;
     }
 
     public int getId() {
@@ -27,12 +25,12 @@ public class CourseOffering {
         this.id = id;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourse_id() {
+        return course_id;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourse_id(int course_id) {
+        this.course_id = course_id;
     }
 
     public int getStudentsNum() {
@@ -51,22 +49,13 @@ public class CourseOffering {
         this.classroom = classroom;
     }
 
-    public List<Date> getDateList() {
-        return dateList;
-    }
-
-    public void setDateList(List<Date> dateList) {
-        this.dateList = dateList;
-    }
-
     @Override
     public String toString() {
         return "CourseOffering{" +
                 "id=" + id +
-                ", course=" + course +
+                ", course_id=" + course_id +
                 ", studentsNum=" + studentsNum +
                 ", classroom='" + classroom + '\'' +
-                ", dateList=" + dateList +
                 '}';
     }
 }

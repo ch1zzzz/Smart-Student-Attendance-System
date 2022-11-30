@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize DAO
         myDAO = new MyDAO(this);
-        myDAO.test();
 
         //Initialize variables with the layout ID
         edit_username = findViewById(R.id.Login_username);
