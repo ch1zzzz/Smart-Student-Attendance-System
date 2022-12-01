@@ -78,10 +78,5 @@ public class LoginDatabase extends SQLiteOpenHelper {
             return false;
         }
     }
-
-
-
-
-
-
 }
+

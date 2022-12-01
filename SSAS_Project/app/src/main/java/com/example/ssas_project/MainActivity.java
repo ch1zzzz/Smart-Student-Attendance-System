@@ -9,8 +9,16 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.example.ssas_project.database.DAO;
+import com.example.ssas_project.database.MyDAO;
+import com.example.ssas_project.entity.Student;
+import com.example.ssas_project.entity.Types;
+
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
+
 public class MainActivity extends AppCompatActivity {
 
+    private DAO myDAO;
     private EditText edit_username, edit_password;
     private TextView edit_recover, edit_register;
     private Button edit_login;
@@ -19,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SQLiteStudioService.instance().start(this);
+        //Initialize DAO
+        myDAO = new MyDAO(this);
 
         //Initialize variables with the layout ID
         edit_username = findViewById(R.id.Login_username);
