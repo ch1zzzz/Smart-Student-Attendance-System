@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <TextView
+            android:id="@+id/student_class_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:text="Class Offering ID"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/student_class_offeringid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/student_class_id"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            android:text="Class ID"/>
+
+
+        <TextView
+            android:id="@+id/student_classoffering_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/student_class_id"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Classroom"/>
+
+        <TextView
+            android:id="@+id/student_classoffering_studentnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/student_class_id"
+            android:layout_toRightOf="@+id/student_classoffering_room"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:text="Number of Students"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
