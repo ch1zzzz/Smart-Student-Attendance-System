@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_foreground"
+    tools:context=".StudentView">
+
+    <TextView
+        android:id="@+id/student_view_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Student View"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/student_view_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_view_banner"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Student name" />
+
+    <TextView
+        android:id="@+id/student_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/student_view_banner"
+        android:layout_toRightOf="@id/student_view_info"
+        android:text="Student ID"/>
+
+    <TextView
+        android:id="@+id/student_view_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/student_view_info"
+        android:text="Student email"/>
+
+    <ListView
+        android:id="@+id/student_view_classlist"
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/student_view_info"
+        android:layout_marginTop="50dp"
+        tools:listitem="@layout/student_class_item" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/student_view_backbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_view_classlist"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:text="Back"/>
+
+</RelativeLayout>
