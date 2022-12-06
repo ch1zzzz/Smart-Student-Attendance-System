@@ -31,7 +31,7 @@
         android:id="@+id/view_info_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="267dp"
-        tools:layout_editor_absoluteY="625dp" />
+        android:text="View"
+        tools:layout_editor_absoluteX="275dp"
+        tools:layout_editor_absoluteY="626dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

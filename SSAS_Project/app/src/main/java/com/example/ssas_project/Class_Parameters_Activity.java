@@ -51,7 +51,7 @@ public class Class_Parameters_Activity extends AppCompatActivity {
         edit_backbutton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Class_Parameters_Activity.this, MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ClassActivity.class);
                 startActivity(intent);
             }
         });

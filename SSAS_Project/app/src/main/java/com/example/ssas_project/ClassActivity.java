@@ -2,6 +2,7 @@ package com.example.ssas_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +17,16 @@ public class ClassActivity extends AppCompatActivity {
     ListView listView;
     List list = new ArrayList();
     ArrayAdapter adapter;
-    private Button edit_add_class;
+    private Button edit_add_class, sign_out;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class);
         edit_add_class = findViewById(R.id.newclass_button);
-                listView = (ListView)findViewById(R.id.list_view);
+        sign_out = findViewById(R.id.class_banner);
+        listView = (ListView)findViewById(R.id.list_view);
         list.add("Class 1 name");
         list.add("Class 2 name");
         list.add("Class 3 name");
@@ -40,7 +43,12 @@ public class ClassActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
+        sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClassActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
