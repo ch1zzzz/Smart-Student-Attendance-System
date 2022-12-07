@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Class_Info_Activity">
 
     <TextView
         android:id="@+id/class_name1"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="55dp"
-        android:layout_marginTop="20dp"
         android:text="TextView"
         tools:layout_editor_absoluteX="55dp"
         tools:layout_editor_absoluteY="93dp" />
-
-    <TextView
-        android:id="@+id/date_show1"
-        android:layout_width="135dp"
-        android:layout_height="40dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="148dp" />
 
     <TextView
         android:id="@+id/date1"
         android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_below="@+id/class_name1"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:text="Date"
         tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <TextView
+        android:id="@+id/date_show1"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_totheRight
+        android:text="TextView"
+        tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="148dp" />
 
     <ListView
         android:id="@+id/student_list1"
         android:layout_width="300dp"
         android:layout_height="400dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="118dp" />
+        tools:listitem="@layout/student_class_item"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="206dp" />
 
     <Button
         android:id="@+id/date_view1"
@@ -61,4 +64,5 @@
         android:text="Stu Info"
         tools:layout_editor_absoluteX="252dp"
         tools:layout_editor_absoluteY="632dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
