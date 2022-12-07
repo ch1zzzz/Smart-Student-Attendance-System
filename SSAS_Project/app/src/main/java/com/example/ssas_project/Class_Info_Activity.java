@@ -25,6 +25,7 @@ import java.util.List;
 
 public class Class_Info_Activity extends AppCompatActivity {
     private TextView date_title1, edit_class_name1, class_date_show1;
+    private TextView class_offid_title1, class_offering_id;
     private Button back_button1, date_view1, student_info1;
     private DAO myDAO;
     private ListView class_list;
@@ -42,6 +43,8 @@ public class Class_Info_Activity extends AppCompatActivity {
         date_view1 = findViewById(R.id.date_view1);
         student_info1 = findViewById(R.id.student_info1);
         class_list = findViewById(R.id.student_list1);
+        class_offid_title1 = findViewById(R.id.class_offid_title);
+        class_offering_id = findViewById(R.id.class_offering_id1);
 
         //database line here
         myDAO = new MyDAO(this);
@@ -53,6 +56,20 @@ public class Class_Info_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Bundle bundle = getIntent().getExtras();
+        String search_id = bundle.getString("classofferingid");
+
+        //Update the StudentView info
+        Student student = myDAO.getStudent(Integer.parseInt(search_id));
+        edit_studentname.setText(student.getName());
+
+        String email_str = String.format("Email: %s", student.getEmail());
+        edit_studentemail.setText(email_str);
+
+        String str = String.format("Student ID: %s", search_id);
+        edit_studentid.setText(str);
+
         ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
         List<List<Integer>> courseoffering_list = new ArrayList<>();
 
