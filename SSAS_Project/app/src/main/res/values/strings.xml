@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SSAS_Project</string>
+    <string name="classes_on_this_day">Classes on this Day</string>
+    <string name="add_class">Add Class</string>
+    <string name="welcome_teacher">Welcome Teacher</string>
+    <string name="sign_out">Sign Out</string>
 </resources>
