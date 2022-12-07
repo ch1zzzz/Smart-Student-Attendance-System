@@ -33,7 +33,12 @@ public class MyDAO implements DAO{
 
     @Override
     public void resetDatabase() {
-        //todo
+        dbHelper.onUpgrade(db,1, 2);
+    }
+
+    @Override
+    public void updateDatabase() {
+        dbHelper.onCreate(db);
     }
 
     @Override
@@ -489,5 +494,65 @@ public class MyDAO implements DAO{
         if(i <= 0)
             Log.i("DAO","update attendance failed");
         db.close();
+    }
+
+    @Override
+    public void insertUser(String username, String password, String first_name, String last_name, String email_addr){
+        db = dbHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", username);
+        contentValues.put("password", password);
+        contentValues.put("first_name", first_name);
+        contentValues.put("last_name", last_name);
+        contentValues.put("email_addr", email_addr);
+
+        long rowid = db.insert(Constants.TABLE_LOGIN, null, contentValues);
+        if(rowid == -1) {
+            Log.i("DAO", "insert user failed");
+        }
+        db.close();
+    }
+
+    @Override
+    public void updateUser(String username, String password){
+        db = dbHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+
+        int i = db.update(Constants.TABLE_LOGIN, contentValues, "username = ?", new String[]{username});
+        if(i <= 0)
+            Log.i("DAO","update user's password failed");
+        db.close();
+    }
+
+    @Override
+    public Boolean checkUsername(String username){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " +
+                Constants.TABLE_LOGIN + " where username = ?", new String[]{username});
+
+        if(cursor.getCount() > 0) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean checkUserPass(String username, String password){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " +
+                Constants.TABLE_LOGIN +
+                " where username = ? and password = ?", new String[]{username, password});
+
+        if(cursor.getCount() > 0) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

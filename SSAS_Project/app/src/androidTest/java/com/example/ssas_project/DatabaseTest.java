@@ -306,4 +306,25 @@ public class DatabaseTest {
     public void cascadeDeleteCourse() {
         dao.deleteCourse(2);
     }
+
+    @Test
+    public void testInsertUser() {
+        dao.insertUser("zyq972198", "123456", "Yongqiang", "Zuo", "yzuo03@tufts.edu");
+    }
+
+    @Test
+    public void testUpdateUser() {
+        dao.updateUser("zyq972198", "654321");
+    }
+
+    @Test
+    public void testCheckUsername() {
+        assertEquals(true, dao.checkUsername("zyq972198"));
+    }
+
+    @Test
+    public void testCheckUserPass() {
+        assertEquals(true, dao.checkUserPass("zyq972198", "654321"));
+        assertEquals(false, dao.checkUserPass("zyq972198", "123456"));
+    }
 }
