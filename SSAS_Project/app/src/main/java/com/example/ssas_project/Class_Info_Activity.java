@@ -2,42 +2,46 @@ package com.example.ssas_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
+import com.example.ssas_project.entity.Course;
+import com.example.ssas_project.entity.CourseOffering;
+import com.example.ssas_project.entity.Student;
+import com.example.ssas_project.entity.Types;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Class_Info_Activity extends AppCompatActivity {
-    private EditText class_name1, class_date_show1;
-    private TextView date_title1;
+    private TextView date_title1, edit_class_name1, class_date_show1;
     private Button back_button1, date_view1, student_info1;
     private DAO myDAO;
-    List list = new ArrayList();
+    private ListView class_list;
 
-    @SuppressLint("WrongViewCast")
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.class_info);
 
         //Initialize Variables with the layout
-        class_name1 = findViewById(R.id.class_name1);
+        edit_class_name1 = findViewById(R.id.class_name1);
         class_date_show1 = findViewById(R.id.date_show1);
         date_title1 = findViewById(R.id.date1);
         back_button1 = findViewById(R.id.button2);
         date_view1 = findViewById(R.id.date_view1);
         student_info1 = findViewById(R.id.student_info1);
-        list = findViewById(R.id.student_list1);
+        class_list = findViewById(R.id.student_list1);
 
         //database line here
         myDAO = new MyDAO(this);
@@ -46,6 +50,29 @@ public class Class_Info_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Class_date_Activity.class);
+                startActivity(intent);
+            }
+        });
+        ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
+        List<List<Integer>> courseoffering_list = new ArrayList<>();
+
+        for(int i = 0; i < courseoffering_list.size(); i ++){
+            List<Integer> list = courseoffering_list.get(i);
+            for(int j = 0; j < list.size(); j++){
+                array_courseoffering.add(myDAO.getCourseOffering(list.get(j)));
+            }
+        }
+
+        StudentViewListAdapter adapter = new StudentViewListAdapter(this, R.layout.student_class_item, array_courseoffering);
+        class_list.setAdapter(adapter);
+        class_list.setClickable(true);
+
+        //Setting to transition to Data View
+        class_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), StudentData.class);
+                intent.putExtra("offer_id", String.valueOf(array_courseoffering.get(position).getId()));
                 startActivity(intent);
             }
         });

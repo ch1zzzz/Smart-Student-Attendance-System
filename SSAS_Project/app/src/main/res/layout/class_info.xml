@@ -11,58 +11,84 @@
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="93dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153" />
 
     <TextView
         android:id="@+id/date1"
         android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_below="@+id/class_name1"
-        android:layout_marginLeft="0dp"
         android:text="Date"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/date_show1"
         android:layout_width="135dp"
         android:layout_height="40dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <ListView
         android:id="@+id/student_list1"
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_below="@+id/date_show1"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="201dp"
-        tools:listitem="@layout/student_class_item" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.782"
+        tools:listitem="@layout/student_view_item" />
 
     <Button
         android:id="@+id/date_view1"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:text="Date"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="147dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <Button
         android:id="@+id/student_info1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stu Info"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="632dp" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 </androidx.constraintlayout.widget.ConstraintLayout>

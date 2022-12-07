@@ -14,7 +14,6 @@ import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.Student;
 import com.example.ssas_project.entity.Types;
 
-import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SQLiteStudioService.instance().start(this);
         //Initialize DAO
         myDAO = new MyDAO(this);
 
