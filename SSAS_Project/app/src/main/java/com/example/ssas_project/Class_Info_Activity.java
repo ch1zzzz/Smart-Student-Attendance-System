@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ssas_project.database.DAO;
+import com.example.ssas_project.database.MyDAO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,7 @@ public class Class_Info_Activity extends AppCompatActivity {
     private EditText class_name1, class_date_show1;
     private TextView date_title1;
     private Button back_button1, date_view1, student_info1;
+    private DAO myDAO;
     List list = new ArrayList();
 
     @SuppressLint("WrongViewCast")
@@ -36,6 +40,7 @@ public class Class_Info_Activity extends AppCompatActivity {
         list = findViewById(R.id.student_list1);
 
         //database line here
+        myDAO = new MyDAO(this);
 
         date_view1.setOnClickListener(new View.OnClickListener() {
             @Override

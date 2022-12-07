@@ -28,7 +28,6 @@
         android:id="@+id/date_show1"
         android:layout_width="135dp"
         android:layout_height="40dp"
-        android:layout_totheRight
         android:text="TextView"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="148dp" />
@@ -37,9 +36,10 @@
         android:id="@+id/student_list1"
         android:layout_width="300dp"
         android:layout_height="400dp"
-        tools:listitem="@layout/student_class_item"
+        android:layout_below="@+id/date_show1"
         tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="206dp" />
+        tools:layout_editor_absoluteY="201dp"
+        tools:listitem="@layout/student_class_item" />
 
     <Button
         android:id="@+id/date_view1"
