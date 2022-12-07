@@ -63,10 +63,11 @@ public class Class_Info_Activity extends AppCompatActivity {
         CourseOffering offer1 = myDAO.getCourseOffering(Integer.parseInt(search_class_offering));
         edit_class_name1.setText(offer1.getCourse_id());
 
+        String offer_id = String.format("_id: %s", offer1.getId());
+        class_offering_id.setText(offer_id);
+
         String stu_num = String.format("studentsNum: %s", offer1.getStudentsNum());
-        class_offering_id.setText(stu_num);
-
-
+        class_student_num1.setText(stu_num);
 
 //        String email_str = String.format("Email: %s", student.getEmail());
 //        edit_studentemail.setText(email_str);
