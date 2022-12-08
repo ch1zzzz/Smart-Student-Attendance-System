@@ -306,4 +306,7 @@ public class DatabaseTest {
     public void cascadeDeleteCourse() {
         dao.deleteCourse(2);
     }
+
+    @Test
+    public void testcase1(){System.out.println(dao.getCourseOffering(1));}
 }

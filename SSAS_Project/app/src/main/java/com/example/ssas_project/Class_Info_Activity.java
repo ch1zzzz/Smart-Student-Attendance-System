@@ -28,7 +28,7 @@ public class Class_Info_Activity extends AppCompatActivity {
     private TextView class_offid_title1, class_offering_id, class_student_num1;
     private Button back_button1, date_view1, student_info1;
     private DAO myDAO;
-    private ListView class_list;
+    private ListView student_view_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,7 @@ public class Class_Info_Activity extends AppCompatActivity {
         back_button1 = findViewById(R.id.button2);
         date_view1 = findViewById(R.id.date_view1);
         student_info1 = findViewById(R.id.student_info1);
-        class_list = findViewById(R.id.student_list1);
-        class_offid_title1 = findViewById(R.id.class_offid_title);
+        student_view_list = findViewById(R.id.student_list1);
         class_offering_id = findViewById(R.id.class_offering_id1);
 
         //database line here
@@ -61,43 +60,30 @@ public class Class_Info_Activity extends AppCompatActivity {
 
         //Update the info
         CourseOffering offer1 = myDAO.getCourseOffering(Integer.parseInt(search_class_offering));
-        edit_class_name1.setText(offer1.getCourse_id());
+        edit_class_name1.setText(""+offer1.getCourse_id());
 
-        String offer_id = String.format("_id: %s", offer1.getId());
-        class_offering_id.setText(offer_id);
+        String offer_id = String.format("class offering ID: %s", offer1.getId());
+        class_offering_id.setText(""+offer_id);
 
         String stu_num = String.format("studentsNum: %s", offer1.getStudentsNum());
-        class_student_num1.setText(stu_num);
+        class_student_num1.setText(""+stu_num);
 
-//        String email_str = String.format("Email: %s", student.getEmail());
-//        edit_studentemail.setText(email_str);
-//
-//        String str = String.format("Student ID: %s", search_id);
-//        edit_studentid.setText(str);
-//
-//        ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
-//        List<List<Integer>> courseoffering_list = new ArrayList<>();
-//
-//        for(int i = 0; i < courseoffering_list.size(); i ++){
-//            List<Integer> list = courseoffering_list.get(i);
-//            for(int j = 0; j < list.size(); j++){
-//                array_courseoffering.add(myDAO.getCourseOffering(list.get(j)));
-//            }
-//        }
-//
-//        StudentViewListAdapter adapter = new StudentViewListAdapter(this, R.layout.student_class_item, array_courseoffering);
-//        class_list.setAdapter(adapter);
-//        class_list.setClickable(true);
-//
-//        //Setting to transition to Data View
-//        class_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                Intent intent = new Intent(getApplicationContext(), StudentData.class);
-//                intent.putExtra("offer_id", String.valueOf(array_courseoffering.get(position).getId()));
-//                startActivity(intent);
-//            }
-//        });
+
+
+        ArrayList<Student> array_student = new ArrayList<>();
+        List<List<Integer>> student_list = new ArrayList<>();
+        student_list.add(myDAO.getEnrollStudents(Integer.parseInt(search_class_offering)));
+
+        for(int i = 0; i < student_list.size(); i ++){
+            List<Integer> list = student_list.get(i);
+            for(int j = 0; j < list.size(); j++){
+                array_student.add(myDAO.getStudent(list.get(j)));
+            }
+        }
+
+        ClassOfferingViewListAdapter adapter = new ClassOfferingViewListAdapter(this, R.layout.student_view_item, array_student);
+        student_view_list.setAdapter(adapter);
+        student_view_list.setClickable(true);
 
 
         date_view1.setOnClickListener(new View.OnClickListener() {
