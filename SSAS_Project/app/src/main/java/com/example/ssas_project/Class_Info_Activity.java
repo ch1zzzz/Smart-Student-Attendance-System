@@ -37,12 +37,11 @@ public class Class_Info_Activity extends AppCompatActivity {
 
         //Initialize Variables with the layout
         edit_class_name1 = findViewById(R.id.class_name1);
-        class_date_show1 = findViewById(R.id.date_show1);
+        //class_date_show1 = findViewById(R.id.date_show1);
         class_student_num1 = findViewById(R.id.student_num1);
         date_title1 = findViewById(R.id.date1);
         back_button1 = findViewById(R.id.button2);
         date_view1 = findViewById(R.id.date_view1);
-        student_info1 = findViewById(R.id.student_info1);
         student_view_list = findViewById(R.id.student_list1);
         class_offering_id = findViewById(R.id.class_offering_id1);
 
@@ -60,23 +59,22 @@ public class Class_Info_Activity extends AppCompatActivity {
 
         //Update the info
         CourseOffering offer1 = myDAO.getCourseOffering(Integer.parseInt(search_class_offering));
-        edit_class_name1.setText(""+offer1.getCourse_id());
+        edit_class_name1.setText("" + offer1.getCourse_id());
 
         String offer_id = String.format("class offering ID: %s", offer1.getId());
-        class_offering_id.setText(""+offer_id);
+        class_offering_id.setText("" + offer_id);
 
         String stu_num = String.format("studentsNum: %s", offer1.getStudentsNum());
-        class_student_num1.setText(""+stu_num);
-
+        class_student_num1.setText("" + stu_num);
 
 
         ArrayList<Student> array_student = new ArrayList<>();
         List<List<Integer>> student_list = new ArrayList<>();
         student_list.add(myDAO.getEnrollStudents(Integer.parseInt(search_class_offering)));
 
-        for(int i = 0; i < student_list.size(); i ++){
+        for (int i = 0; i < student_list.size(); i++) {
             List<Integer> list = student_list.get(i);
-            for(int j = 0; j < list.size(); j++){
+            for (int j = 0; j < list.size(); j++) {
                 array_student.add(myDAO.getStudent(list.get(j)));
             }
         }
@@ -93,5 +91,24 @@ public class Class_Info_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        student_view_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), StudentView.class);
+                intent.putExtra("student_id", String.valueOf(array_student.get(i).getId()));
+                intent.putExtra("offer_id", search_class_offering);
+                startActivity(intent);
+            }
+        });
+
+
+        // back button
+//        back_button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 }

@@ -27,11 +27,11 @@
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="16dp" />
 
-    <Button
-        android:id="@+id/view_info_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="626dp" />
+<!--    <Button-->
+<!--        android:id="@+id/view_info_date"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="View"-->
+<!--        tools:layout_editor_absoluteX="275dp"-->
+<!--        tools:layout_editor_absoluteY="626dp" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
