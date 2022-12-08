@@ -18,7 +18,29 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/teacher_class_offeringid"
+            android:id="@+id/teacher_class_name_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/teacher_class_id"
+            android:text="Class Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/teacher_class_offering_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/teacher_class_name"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:text="# Offerings"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/teacher_classid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/teacher_class_id"
@@ -28,21 +50,24 @@
 
 
         <TextView
-            android:id="@+id/teacher_classoffering_room"
+            android:id="@+id/teacher_class_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/teacher_class_id"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/teacher_class_id"
+            android:layout_toRightOf="@+id/teacher_class_name_bold"
+            android:text="Class Name" />
 
         <TextView
-            android:id="@+id/teacher_classoffering_studentnumber"
+            android:id="@+id/teacher_class_offering_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/teacher_class_id"
-            android:layout_toRightOf="@+id/teacher_classoffering_room"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/teacher_class_name"
+            android:layout_toRightOf="@+id/teacher_class_offering_bold"
+            android:text="Class Offering" />
 
     </RelativeLayout>
 
