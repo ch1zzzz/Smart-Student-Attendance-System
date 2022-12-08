@@ -327,4 +327,18 @@ public class DatabaseTest {
         assertEquals(true, dao.checkUserPass("zyq972198", "654321"));
         assertEquals(false, dao.checkUserPass("zyq972198", "123456"));
     }
+
+    @Test(expected = RuntimeException.class)
+    public void testEmptyLogin() {
+        dao.checkUsername("aaa");
+    }
+    @Test
+    public void testGetCOByTime() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2023, 2, 1, 19,0,0);
+        Date date = calendar.getTime();
+        for(CourseOffering c : dao.getCourseOfferingByTime(date)) {
+            System.out.println(c);
+        }
+    }
 }

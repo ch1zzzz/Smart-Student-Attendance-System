@@ -72,6 +72,8 @@ public interface DAO {
 
     //get all class times for a courseOffering
     List<Date> getTime(int courseOfferingId);
+    //get all courseOffering aat date
+    List<CourseOffering> getCourseOfferingByTime(Date date);
     //insert a new time for a courseOffering
     void insertTime(int courseOfferingId, Date date);
     //update an old time to a new time for a courseOffering
@@ -108,7 +110,7 @@ public interface DAO {
     void insertUser(String username, String password, String first_name, String last_name, String email_addr);
     //update user's password
     void updateUser(String username, String password);
-    //check if username exists
+    //check if username exists(if the login database is empty, it throws a runtimeException)
     Boolean checkUsername(String username);
     //check if username and password exsits
     Boolean checkUserPass(String username, String password);

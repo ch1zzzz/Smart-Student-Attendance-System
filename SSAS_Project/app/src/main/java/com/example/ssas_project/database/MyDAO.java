@@ -341,6 +341,28 @@ public class MyDAO implements DAO{
     }
 
     @Override
+    public List<CourseOffering> getCourseOfferingByTime(Date date) {
+        db = dbHelper.getReadableDatabase();
+        DateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String d = iso8601Format.format(date);
+        Cursor cursor = db.rawQuery("select * from " + Constants.TABLE_SCHEDULE + " as s inner join " + Constants.TABLE_COURSEOFFERING + " as c on s.courseOffering_id = c._id where class_time = ?", new String[] {d});
+
+        List<CourseOffering> list = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+                int course_id = cursor.getInt(cursor.getColumnIndexOrThrow("course_id"));
+                int studentNum = cursor.getInt(cursor.getColumnIndexOrThrow("studentsNum"));
+                String classroom = cursor.getString(cursor.getColumnIndexOrThrow("classroom"));
+                CourseOffering c = new CourseOffering(id, course_id, studentNum, classroom);
+                list.add(c);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
+
+    @Override
     public void updateTime(int courseOfferingId, Date oldDate, Date newDate) {
         db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -530,8 +552,14 @@ public class MyDAO implements DAO{
     @Override
     public Boolean checkUsername(String username){
         db = dbHelper.getReadableDatabase();
+
+        Cursor cursor1 = db.query(Constants.TABLE_LOGIN, null, null, null, null, null, null);
+
         Cursor cursor = db.rawQuery("Select * from " +
                 Constants.TABLE_LOGIN + " where username = ?", new String[]{username});
+        if(cursor1.getCount() == 0) {
+            throw new RuntimeException("login database is empty");
+        }
 
         if(cursor.getCount() > 0) {
             return true;
