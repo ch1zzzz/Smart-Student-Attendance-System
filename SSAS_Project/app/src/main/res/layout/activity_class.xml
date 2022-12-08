@@ -19,6 +19,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/calendar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="50dp"
+        android:text="Go To Calendar View"
+        app:layout_constraintEnd_toStartOf="@+id/class_banner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/newclass_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_out_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -29,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/course_list_view"
+        android:id="@+id/teacher_course_list_view"
         android:layout_width="405dp"
         android:layout_height="535dp"
         android:layout_marginStart="6dp"
@@ -39,13 +51,13 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/student_class_item" />
+        tools:listitem="@layout/teacher_class_item" />
 
     <TextView
         android:id="@+id/class_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:paddingTop="75dp"
         android:text="@string/welcome_teacher"

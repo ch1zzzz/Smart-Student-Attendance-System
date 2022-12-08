@@ -49,7 +49,7 @@ public class TeacherViewListAdapter extends ArrayAdapter<Course> {
         course_name.setText(str2);
 
         String str3 = valueOf(getItem(position).getNumberOfferings());
-        course_name.setText(str3);
+        course_number_offerings.setText(str3);
 
 
         return convertView;

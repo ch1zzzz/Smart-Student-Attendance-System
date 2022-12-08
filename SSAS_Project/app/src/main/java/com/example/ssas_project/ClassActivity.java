@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
@@ -15,50 +16,50 @@ import com.example.ssas_project.entity.Course;
 import com.example.ssas_project.entity.CourseOffering;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ClassActivity extends AppCompatActivity {
     private DAO myDAO;
-    ListView listView;
-    private Button sign_out_button, add_class_button;
+    private ListView edit_listview;
+    private Button sign_out_button, add_class_button, calendar_button ;
+    private TextView banner;
     List list = new ArrayList();
     ArrayAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class);
-        sign_out_button = findViewById(R.id.sign_out_button);
-        add_class_button = findViewById(R.id.newclass_button);
+
         myDAO = new MyDAO(this);
-        //Create Testing Database for Course Offering
-        Course c1 = new Course(1, "CS111 OS", false, 1);
-        myDAO.insertCourse(c1);
 
-        CourseOffering c2 = new CourseOffering(1, 1, 40, "JCC101");
-        myDAO.insertCourseOffering(c2);
-
-        CourseOffering c3 = new CourseOffering(2, 1, 30, "JCC102");
-        myDAO.insertCourseOffering(c3);
-
-        CourseOffering c4 = new CourseOffering(3, 1, 30, "JCC102");
-        myDAO.insertCourseOffering(c4);
-        listView = (ListView)findViewById(R.id.course_list_view);
-
-        Course c5 = new Course(2, "EE192 SWE", true, 1);
-        myDAO.insertCourse(c5);
-
-        //Update List View
-        ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
-
-        List<CourseOffering> courseoffering_list = myDAO.getCourseOffering();
-        for(int i = 0; i < courseoffering_list.size(); i ++){
-            CourseOffering temp = courseoffering_list.get(i);
-            array_courseoffering.add(temp);
+        sign_out_button = findViewById(R.id.sign_out_button);
+        edit_listview = findViewById(R.id.teacher_course_list_view);
+        add_class_button = findViewById(R.id.newclass_button);
+        calendar_button = findViewById(R.id.calendar_button);
+        banner = findViewById(R.id.class_banner);
+        Intent intent = getIntent();
+        if(intent.getExtras()!=null) {
+            Bundle extras = intent.getExtras();
+            int class_id = Integer.parseInt(extras.getString("id"));
+            String class_name = extras.getString("name");
+            int class_num_offerings = Integer.parseInt(extras.getString("offerings"));
+            Course temp = new Course(class_id, class_name, true,class_num_offerings );
+            myDAO.insertCourse(temp);
         }
-        StudentViewListAdapter adapter = new StudentViewListAdapter(this, R.layout.student_class_item, array_courseoffering);
-        listView.setAdapter(adapter);
-        listView.setClickable(true);
+        //Update List View
+        ArrayList<Course> array_courses = new ArrayList<>();
 
+        List<Course> courses_list = myDAO.getCourse();
+        for (int i = 0; i < courses_list.size(); i++) {
+            Course temp = courses_list.get(i);
+            array_courses.add(temp);
+        }
+        TeacherViewListAdapter adapter = new TeacherViewListAdapter(this, R.layout.teacher_class_item, array_courses);
+        if(array_courses.size()>=1) {
+            edit_listview.setAdapter(adapter);
+            edit_listview.setClickable(true);
+        }
         sign_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +74,12 @@ public class ClassActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        calendar_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClassActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
