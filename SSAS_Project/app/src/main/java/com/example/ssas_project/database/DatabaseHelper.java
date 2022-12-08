@@ -1,5 +1,6 @@
 package com.example.ssas_project.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -20,9 +21,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL("Create Table IF NOT EXISTS " +
                 Constants.TABLE_LOGIN +
                 "(username TEXT primary key, password TEXT, first_name TEXT, last_name TEXT, email_addr TEXT)");
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", "admin");
+        contentValues.put("password", "admin");
+        contentValues.put("first_name", "admin");
+        contentValues.put("last_name", "");
+        contentValues.put("email_addr", "");
+        db.insert(Constants.TABLE_LOGIN, null, contentValues);
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " +
                 Constants.TABLE_STUDENT +

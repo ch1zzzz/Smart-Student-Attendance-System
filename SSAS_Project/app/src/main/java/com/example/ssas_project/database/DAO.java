@@ -72,10 +72,12 @@ public interface DAO {
 
     //get all class times for a courseOffering
     List<Date> getTime(int courseOfferingId);
-    //get all courseOffering aat date
+    //get all courseOffering at date
     List<CourseOffering> getCourseOfferingByTime(Date date);
     //insert a new time for a courseOffering
     void insertTime(int courseOfferingId, Date date);
+    //get all courseOffering on the day of date
+    List<CourseOffering> getCourseOfferingByDay(Date date);
     //update an old time to a new time for a courseOffering
     void updateTime(int courseOfferingId, Date oldDate, Date newDate);
     //delete an existed time for a courseOffering
