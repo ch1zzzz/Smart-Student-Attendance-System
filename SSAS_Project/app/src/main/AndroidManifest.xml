@@ -15,6 +15,13 @@
         android:theme="@style/Theme.SSAS_Project"
         tools:targetApi="31">
         <activity
+            android:name=".CalendarActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".StudentDataTable"
             android:exported="false">
             <meta-data
@@ -22,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".StudentView"
+            android:name=".MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -43,14 +50,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ClassActivity"
+            android:name=".StudentIDLookup"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".StudentView"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -71,7 +78,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".StudentIDLookup"
+            android:name=".ClassActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

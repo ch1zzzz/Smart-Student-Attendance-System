@@ -29,9 +29,10 @@
 
     <EditText
         android:id="@+id/register_class_days2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="What days is your class hosted?"
@@ -42,10 +43,11 @@
 
     <EditText
         android:id="@+id/register_class_duration2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:hint="Length of Class"
         android:inputType="textEmailAddress"
@@ -55,10 +57,11 @@
 
     <EditText
         android:id="@+id/register_class_time2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:hint="Class Time"
         android:inputType="textPersonName"
@@ -68,10 +71,11 @@
 
     <EditText
         android:id="@+id/register_classname2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:hint="Class Name"
         android:inputType="textPersonName"
