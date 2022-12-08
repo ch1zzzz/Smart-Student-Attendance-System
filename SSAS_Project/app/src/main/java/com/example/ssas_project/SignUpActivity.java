@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
-
+import com.example.ssas_project.database.DAO;
+import com.example.ssas_project.database.MyDAO;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText edit_firstname, edit_lastname, edit_username, edit_password, edit_email, edit_confirm_password;
     private Button edit_register, edit_backbutton;
-    private LoginDatabase LoginDatabase;
+    private DAO myDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         edit_backbutton         = findViewById(R.id.Register_backbutton);
 
         //Invoke the database
-        LoginDatabase = new LoginDatabase(this);
-
+        myDAO = new MyDAO(this);
         //Set Listener for the Backbutton
         edit_backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +68,13 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                     else{
                         //Check if the user exists
-                        Boolean user_verify = LoginDatabase.check_username(username);
+                        Boolean user_verify = myDAO.checkUsername(username);
                         if(user_verify == true){
                             Toast.makeText(SignUpActivity.this, "Users already exist", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            LoginDatabase.insertData(username, password, first_name, last_name, email);
+                            System.out.println(username + password + first_name + last_name + email);
+                            myDAO.insertUser(username, password, first_name, last_name, email);
                             Toast.makeText(SignUpActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
