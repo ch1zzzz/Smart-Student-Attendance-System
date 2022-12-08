@@ -1,11 +1,8 @@
 package com.example.ssas_project;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-import com.example.ssas_project.database.DAO;
-import com.example.ssas_project.database.MyDAO;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
