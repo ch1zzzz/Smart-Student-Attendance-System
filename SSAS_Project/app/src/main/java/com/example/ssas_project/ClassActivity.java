@@ -44,6 +44,9 @@ public class ClassActivity extends AppCompatActivity {
         myDAO.insertCourseOffering(c4);
         listView = (ListView)findViewById(R.id.course_list_view);
 
+        Course c5 = new Course(2, "EE192 SWE", true, 1);
+        myDAO.insertCourse(c5);
+
         //Update List View
         ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
 
