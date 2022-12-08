@@ -27,6 +27,7 @@ public class LoginDatabase extends SQLiteOpenHelper {
         project_database.execSQL("Drop Table If Exists " +login_table);
         onCreate(project_database);
     }
+
     //Insert user profile
     public Boolean insertData(String username, String password, String first_name, String last_name, String email_addr){
         SQLiteDatabase project_database = this.getWritableDatabase();

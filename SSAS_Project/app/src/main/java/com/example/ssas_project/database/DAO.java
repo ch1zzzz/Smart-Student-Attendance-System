@@ -20,7 +20,10 @@ import java.util.Map;
  */
 public interface DAO {
 
+    //drop all the tables and recreate them
     void resetDatabase();
+    //create table if it's not existed
+    void updateDatabase();
 
     //------------------student_table------------------
 
@@ -69,8 +72,12 @@ public interface DAO {
 
     //get all class times for a courseOffering
     List<Date> getTime(int courseOfferingId);
+    //get all courseOffering at date
+    List<CourseOffering> getCourseOfferingByTime(Date date);
     //insert a new time for a courseOffering
     void insertTime(int courseOfferingId, Date date);
+    //get all courseOffering on the day of date
+    List<CourseOffering> getCourseOfferingByDay(Date date);
     //update an old time to a new time for a courseOffering
     void updateTime(int courseOfferingId, Date oldDate, Date newDate);
     //delete an existed time for a courseOffering
@@ -97,4 +104,16 @@ public interface DAO {
     void insertAttendance(int student_id, int courseOffering_id, Date date, boolean attendance);
     //update the existed record of the student's attendance at the time in the courseOffering
     void updateAttendance(int student_id, int courseOffering_id, Date date, boolean attendance);
+
+
+    //------------------login_table------------------
+
+    //insert user and information
+    void insertUser(String username, String password, String first_name, String last_name, String email_addr);
+    //update user's password
+    void updateUser(String username, String password);
+    //check if username exists(if the login database is empty, it throws a runtimeException)
+    Boolean checkUsername(String username);
+    //check if username and password exsits
+    Boolean checkUserPass(String username, String password);
 }

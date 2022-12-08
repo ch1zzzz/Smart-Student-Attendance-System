@@ -306,4 +306,57 @@ public class DatabaseTest {
     public void cascadeDeleteCourse() {
         dao.deleteCourse(2);
     }
+
+    @Test
+    public void testInsertUser() {
+        dao.insertUser("zyq972198", "123456", "Yongqiang", "Zuo", "yzuo03@tufts.edu");
+    }
+
+    @Test
+    public void testUpdateUser() {
+        dao.updateUser("zyq972198", "654321");
+    }
+
+    @Test
+    public void testCheckUsername() {
+        assertEquals(true, dao.checkUsername("zyq972198"));
+    }
+
+    @Test
+    public void testCheckUserPass() {
+        assertEquals(true, dao.checkUserPass("zyq972198", "654321"));
+        assertEquals(false, dao.checkUserPass("zyq972198", "123456"));
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testEmptyLogin() {
+        dao.checkUsername("aaa");
+    }
+
+    @Test
+    public void testGetCOByTime() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2023, 2, 1, 19,0,0);
+        Date date = calendar.getTime();
+        for(CourseOffering c : dao.getCourseOfferingByTime(date)) {
+            System.out.println(c);
+        }
+    }
+
+    @Test
+    public void testGetCOByDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2023, 2, 1);
+        Date date = calendar.getTime();
+        DateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String d = iso8601Format.format(date).split("\\s+")[0];
+        for(CourseOffering c: dao.getCourseOfferingByDay(date)) {
+            System.out.println(c);
+        }
+    }
+
+    @Test
+    public void test12() {
+        dao.updateDatabase();
+    }
 }
