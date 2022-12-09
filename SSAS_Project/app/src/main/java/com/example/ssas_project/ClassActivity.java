@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
@@ -22,7 +23,7 @@ import java.util.List;
 public class ClassActivity extends AppCompatActivity {
     private DAO myDAO;
     private ListView edit_listview;
-    private Button sign_out_button, add_class_button, calendar_button ;
+    private Button sign_out_button, add_class_button, calendar_button, extract_data_button ;
     private TextView banner;
     List list = new ArrayList();
     ArrayAdapter adapter;
@@ -37,7 +38,9 @@ public class ClassActivity extends AppCompatActivity {
         edit_listview = findViewById(R.id.teacher_course_list_view);
         add_class_button = findViewById(R.id.newclass_button);
         calendar_button = findViewById(R.id.calendar_button);
+        extract_data_button = findViewById(R.id.Extract_Database);
         banner = findViewById(R.id.class_banner);
+        //banner.setText("Welcome " + myDAO)
         Intent intent = getIntent();
         if(intent.getExtras()!=null) {
             Bundle extras = intent.getExtras();
@@ -79,6 +82,14 @@ public class ClassActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ClassActivity.this, CalendarActivity.class);
                 startActivity(intent);
+            }
+        });
+        extract_data_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ClassActivity.this, "Downloading All Data as csv file", Toast.LENGTH_SHORT).show();
+                //Intent intent = new Intent(ClassActivity.this, CalendarActivity.class);
+                //startActivity(intent);
             }
         });
     }
