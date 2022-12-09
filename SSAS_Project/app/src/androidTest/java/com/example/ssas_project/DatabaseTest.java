@@ -359,4 +359,11 @@ public class DatabaseTest {
     public void test12() {
         dao.updateDatabase();
     }
+
+    @Test
+    public void testGetInfo() {
+        for(String s : dao.getUserInfo("zyq972198")) {
+            System.out.println(s);
+        }
+    }
 }
