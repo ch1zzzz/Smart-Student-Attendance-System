@@ -39,18 +39,36 @@ public class AddOfferingActivity extends AppCompatActivity{
 
         myDAO = new MyDAO(this);
 
-        add_offer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String id = offer_id1.getText().toString();
-                String stu_num = student_num1.getText().toString();
-                String classroom = class_room1.getText().toString();
-                CourseOffering c1 = new CourseOffering(Integer.parseInt(id), 1, Integer.parseInt(stu_num), classroom);
-                myDAO.insertCourseOffering(c1);
-                Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
-                startActivity(intent);
-            }
-        });
+        Intent pre_intent = getIntent();
+        if(pre_intent.getExtras() == null){
+        }
+        else {
+
+            Bundle bundle = getIntent().getExtras();
+            String search_class_offering = bundle.getString("course_id");
+
+            add_offer1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String id = offer_id1.getText().toString();
+                    String stu_num = student_num1.getText().toString();
+                    String classroom = class_room1.getText().toString();
+                    CourseOffering c1 = new CourseOffering(Integer.parseInt(id), Integer.parseInt(search_class_offering), Integer.parseInt(stu_num), classroom);
+                    myDAO.insertCourseOffering(c1);
+                    Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            back_button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
+                    intent.putExtra("course_id", search_class_offering);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
 }

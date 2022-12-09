@@ -87,6 +87,9 @@ public interface DAO {
 
     //get all students who take the courseOffering
     List<Integer> getEnrollStudents(int courseOffering_id);
+
+    List<Integer> getCourseofferingByCourseID(int course_id);
+
     //get all courseOfferings the student take
     List<Integer> getEnrollCourses(int student_id);
     //enroll a student to a courseOffering

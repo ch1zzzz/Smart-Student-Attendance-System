@@ -101,8 +101,8 @@ public class StudentIDLookup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String id = edit_id.getText().toString();
-                Intent intent = new Intent(StudentIDLookup.this,StudentView.class);
-                intent.putExtra("student_id", id);
+                Intent intent = new Intent(StudentIDLookup.this,CoursePageActivity.class);
+                intent.putExtra("course_id", id);
                 startActivity(intent);
             }
         });

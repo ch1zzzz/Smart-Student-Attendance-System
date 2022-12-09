@@ -451,6 +451,21 @@ public class MyDAO implements DAO{
     }
 
     @Override
+    public List<Integer> getCourseofferingByCourseID(int course_id){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + Constants.TABLE_COURSEOFFERING + " where course_id = ?", new String[] {course_id+""});
+        List<Integer> list = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                int _id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+                list.add(_id);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
+
+    @Override
     public List<Integer> getEnrollCourses(int student_id) {
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from " + Constants.TABLE_ENROLL + " where student_id = ?", new String[] {student_id+""});
