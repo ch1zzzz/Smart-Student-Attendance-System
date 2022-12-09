@@ -83,7 +83,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".StudentIDLookup"
+            android:name=".CoursePageActivity"
             android:exported="true">
 
             <meta-data

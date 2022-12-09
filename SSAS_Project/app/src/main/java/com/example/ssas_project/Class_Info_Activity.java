@@ -4,31 +4,35 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
-import com.example.ssas_project.entity.Course;
 import com.example.ssas_project.entity.CourseOffering;
 import com.example.ssas_project.entity.Student;
-import com.example.ssas_project.entity.Types;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Class_Info_Activity extends AppCompatActivity {
     private TextView date_title1, edit_class_name1, class_date_show1;
     private TextView class_offid_title1, class_offering_id, class_student_num1;
     private Button back_button1, date_view1, student_info1;
+    private EditText search_name1;
     private DAO myDAO;
     private ListView student_view_list;
+
+//    public void changeStudent(String name){
+//        student_view_list.clear();
+//
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,9 @@ public class Class_Info_Activity extends AppCompatActivity {
         date_view1 = findViewById(R.id.date_view1);
         student_view_list = findViewById(R.id.student_list1);
         class_offering_id = findViewById(R.id.class_offering_id1);
+        search_name1 = findViewById(R.id.search_name1);
+
+//        setSupportActionBar(student_view_list);
 
         //database line here
         myDAO = new MyDAO(this);
@@ -83,6 +90,24 @@ public class Class_Info_Activity extends AppCompatActivity {
         student_view_list.setAdapter(adapter);
         student_view_list.setClickable(true);
 
+
+        search_name1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String name = search_name1.getText().toString();
+                adapter.getFilter().filter(name);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         date_view1.setOnClickListener(new View.OnClickListener() {
             @Override
