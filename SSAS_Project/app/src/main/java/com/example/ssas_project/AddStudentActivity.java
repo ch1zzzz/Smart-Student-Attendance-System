@@ -30,7 +30,7 @@ public class AddStudentActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_offering_page);
+        setContentView(R.layout.add_student_page);
 
         student_id = findViewById(R.id.student_id_input);
         student_name1 = findViewById(R.id.student_name_input);

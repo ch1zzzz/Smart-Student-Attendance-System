@@ -24,7 +24,7 @@ import java.util.List;
 public class CoursePageActivity extends AppCompatActivity {
     private TextView course_name;
     private ListView course_offering_list;
-    private Button back_button1, add_offering1;
+    private Button back_button1, add_offering1, del_offering;
     private DAO myDAO;
 
     @Override
@@ -38,6 +38,9 @@ public class CoursePageActivity extends AppCompatActivity {
         add_offering1 = findViewById(R.id.add_course_offering);
 
         myDAO = new MyDAO(this);
+
+
+        // get course_id from previous activity
         Intent pre_intent = getIntent();
         if(pre_intent.getExtras() == null){
         }
@@ -73,6 +76,15 @@ public class CoursePageActivity extends AppCompatActivity {
                 }
             });
 
+            del_offering.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(CoursePageActivity.this, AddOfferingActivity.class);
+                    intent.putExtra("course_id",search_class_offering);
+                    startActivity(intent);
+                }
+            });
+
             course_offering_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view1, int position, long id) {
@@ -82,6 +94,8 @@ public class CoursePageActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+
 
             //        back_button1.setOnClickListener(new View.OnClickListener() {
             //            @Override

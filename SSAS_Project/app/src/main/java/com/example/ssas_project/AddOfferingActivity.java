@@ -56,6 +56,7 @@ public class AddOfferingActivity extends AppCompatActivity{
                     CourseOffering c1 = new CourseOffering(Integer.parseInt(id), Integer.parseInt(search_class_offering), Integer.parseInt(stu_num), classroom);
                     myDAO.insertCourseOffering(c1);
                     Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
+                    intent.putExtra("course_id", search_class_offering);
                     startActivity(intent);
                 }
             });
