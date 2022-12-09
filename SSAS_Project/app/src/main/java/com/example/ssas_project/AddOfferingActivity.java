@@ -32,9 +32,25 @@ public class AddOfferingActivity extends AppCompatActivity{
         setContentView(R.layout.add_offering_page);
 
         offer_id1 = findViewById(R.id.course_off_id);
-        
+        student_num1 = findViewById(R.id.student_num);
+        class_room1 = findViewById(R.id.class_room1);
+        back_button1 = findViewById(R.id.back_button122);
+        add_offer1 = findViewById(R.id.add_course_button1);
 
+        myDAO = new MyDAO(this);
 
+        add_offer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = offer_id1.getText().toString();
+                String stu_num = student_num1.getText().toString();
+                String classroom = class_room1.getText().toString();
+                CourseOffering c1 = new CourseOffering(Integer.parseInt(id), 1, Integer.parseInt(stu_num), classroom);
+                myDAO.insertCourseOffering(c1);
+                Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

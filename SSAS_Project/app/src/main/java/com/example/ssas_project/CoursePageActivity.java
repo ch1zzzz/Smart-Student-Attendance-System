@@ -45,7 +45,7 @@ public class CoursePageActivity extends AppCompatActivity {
         ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
         List<List<Integer>> courseoffering_list = new ArrayList<>();
 
-        courseoffering_list.add(myDAO.getEnrollCourses(Integer.parseInt(search_class_offering)));
+        courseoffering_list.add(myDAO.getCourseOffering(Integer.parseInt(search_class_offering)));
 
         for(int i = 0; i < courseoffering_list.size(); i ++){
             List<Integer> list = courseoffering_list.get(i);
@@ -61,7 +61,8 @@ public class CoursePageActivity extends AppCompatActivity {
         add_offering1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(CoursePageActivity.this, AddOfferingActivity.class);
+                startActivity(intent);
             }
         });
 
