@@ -127,13 +127,13 @@ public class Class_Info_Activity extends AppCompatActivity {
             }
         });
 
-
         // back button
-//        back_button1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+        back_button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Class_Info_Activity.this, CoursePageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

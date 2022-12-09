@@ -58,6 +58,13 @@ public class CoursePageActivity extends AppCompatActivity {
         course_offering_list.setAdapter(adapter);
         course_offering_list.setClickable(true);
 
+        add_offering1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 //        course_offering_list.setOnClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

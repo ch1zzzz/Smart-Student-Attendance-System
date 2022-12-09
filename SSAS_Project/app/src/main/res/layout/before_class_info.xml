@@ -24,21 +24,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/student_class_item"/>
 
     <Button
         android:id="@+id/add_course_offering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="588dp"
         android:text="ADD\nCourseoffering"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="588dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/back_button121"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="back"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="17dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
