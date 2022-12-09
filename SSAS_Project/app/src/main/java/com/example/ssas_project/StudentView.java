@@ -72,6 +72,9 @@ public class StudentView extends AppCompatActivity {
             String str = String.format("Student ID: %s", search_id);
             edit_studentid.setText(str);
 
+
+
+
             //Update List View
             ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
             List<List<Integer>> courseoffering_list = new ArrayList<>();
