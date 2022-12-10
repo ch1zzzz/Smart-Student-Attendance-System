@@ -25,7 +25,7 @@ import java.util.List;
 public class CoursePageActivity extends AppCompatActivity {
     private TextView course_name;
     private ListView course_offering_list;
-    private Button back_button1, add_offering1, del_offering;
+    private Button back_button1, add_offering1, del_offering, offering_search;
     private DAO myDAO;
 
     @Override
@@ -38,6 +38,7 @@ public class CoursePageActivity extends AppCompatActivity {
         back_button1 = findViewById(R.id.back_button121);
         add_offering1 = findViewById(R.id.add_course_offering);
         del_offering = findViewById(R.id.del_course_offering2);
+        offering_search = findViewById(R.id.offering_search1);
 
         myDAO = new MyDAO(this);
 
@@ -95,6 +96,15 @@ public class CoursePageActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view1, int position, long id) {
                     Intent intent = new Intent(getApplicationContext(), Class_Info_Activity.class);
                     intent.putExtra("offer_id", String.valueOf(array_courseoffering.get(position).getId()));
+                    intent.putExtra("course_id", search_class_offering);
+                    startActivity(intent);
+                }
+            });
+
+            offering_search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), OfferingSearchActivity.class);
                     intent.putExtra("course_id", search_class_offering);
                     startActivity(intent);
                 }

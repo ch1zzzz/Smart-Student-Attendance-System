@@ -25,7 +25,7 @@ import java.util.List;
 public class Class_Info_Activity extends AppCompatActivity {
     private TextView  edit_class_name1, class_date_show1;
     private TextView class_offering_id, class_student_num1;
-    private Button back_button1, date_view1, add_student1, del_student1;
+    private Button back_button1, offering_search, add_student1, del_student1;
     private EditText search_name1;
     private DAO myDAO;
     private ListView student_view_list;
@@ -46,7 +46,6 @@ public class Class_Info_Activity extends AppCompatActivity {
         class_student_num1 = findViewById(R.id.student_num1);
 //        date_title1 = findViewById(R.id.date1);
         back_button1 = findViewById(R.id.button2);
-        date_view1 = findViewById(R.id.date_view1);
         student_view_list = findViewById(R.id.student_list1);
         class_offering_id = findViewById(R.id.class_offering_id1);
         search_name1 = findViewById(R.id.search_name1);
@@ -115,6 +114,7 @@ public class Class_Info_Activity extends AppCompatActivity {
 
                 }
             });
+
 
             // date select button
 //            date_view1.setOnClickListener(new View.OnClickListener() {
