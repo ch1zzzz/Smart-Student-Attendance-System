@@ -25,7 +25,7 @@ import java.util.List;
 public class Class_Info_Activity extends AppCompatActivity {
     private TextView  edit_class_name1, class_date_show1;
     private TextView class_offering_id, class_student_num1;
-    private Button back_button1, offering_search, add_student1, del_student1;
+    private Button back_button1, student_search1, add_student1, del_student1;
     private EditText search_name1;
     private DAO myDAO;
     private ListView student_view_list;
@@ -48,7 +48,7 @@ public class Class_Info_Activity extends AppCompatActivity {
         back_button1 = findViewById(R.id.button2);
         student_view_list = findViewById(R.id.student_list1);
         class_offering_id = findViewById(R.id.class_offering_id1);
-        search_name1 = findViewById(R.id.search_name1);
+        student_search1 = findViewById(R.id.student_search);
         add_student1 = findViewById(R.id.add_student);
         del_student1 = findViewById(R.id.delete_student);
 
@@ -96,26 +96,6 @@ public class Class_Info_Activity extends AppCompatActivity {
             student_view_list.setClickable(true);
 
 
-            search_name1.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    String name = search_name1.getText().toString();
-//                    if()
-                    
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-                }
-            });
-
-
             // date select button
 //            date_view1.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -153,6 +133,16 @@ public class Class_Info_Activity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), DeleteStudentActivity.class);
                     intent.putExtra("offer_id", offering_id);
                     intent.putExtra("course_id", course_id1);
+                    startActivity(intent);
+                }
+            });
+
+            student_search1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), StudentSearchActivity.class);
+                    intent.putExtra("course_id", course_id1);
+                    intent.putExtra("offer_id", offering_id);
                     startActivity(intent);
                 }
             });

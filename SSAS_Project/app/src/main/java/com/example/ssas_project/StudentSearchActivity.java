@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class OfferingSearchActivity extends AppCompatActivity{
+public class StudentSearchActivity extends AppCompatActivity{
     private EditText search_bar;
     private Button back_button1, search_button1;
     private DAO myDAO;
@@ -29,11 +29,11 @@ public class OfferingSearchActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.offering_search_page);
+        setContentView(R.layout.student_search_page);
 
-        search_bar = findViewById(R.id.offering_search_bar);
-        back_button1 = findViewById(R.id.back_button126);
-        search_button1 = findViewById(R.id.search_button1);
+        search_bar = findViewById(R.id.student_search_bar);
+        back_button1 = findViewById(R.id.back_button127);
+        search_button1 = findViewById(R.id.search_button2);
 
         myDAO = new MyDAO(this);
 
@@ -44,24 +44,24 @@ public class OfferingSearchActivity extends AppCompatActivity{
 
             Bundle bundle = getIntent().getExtras();
             String course_id1 = bundle.getString("course_id");
+            String offer_id1 = bundle.getString("offer_id");
 
             search_button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String offer_id = search_bar.getText().toString();
-                    if(offer_id.isEmpty()){
-                        Toast.makeText(OfferingSearchActivity.this, "Please enter all the required field!", Toast.LENGTH_SHORT).show();
+                    String student_id = search_bar.getText().toString();
+                    if(student_id.isEmpty()){
+                        Toast.makeText(StudentSearchActivity.this, "Please enter all the required field!", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        CourseOffering id_verify = myDAO.getCourseOffering(Integer.parseInt(offer_id));
-                        if(id_verify != null) {
-                            Intent intent = new Intent(OfferingSearchActivity.this, Class_Info_Activity.class);
-                            intent.putExtra("course_id", course_id1);
-                            intent.putExtra("offer_id", offer_id);
+                        Student s1 = myDAO.getStudent(Integer.parseInt(student_id));
+                        if(s1 != null){
+                            Intent intent = new Intent(StudentSearchActivity.this,StudentView.class);
+                            intent.putExtra("student_id", student_id);
                             startActivity(intent);
                         }
                         else{
-                            Toast.makeText(OfferingSearchActivity.this, "Class offering does not exist!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(StudentSearchActivity.this, "Student does not exist!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -70,11 +70,13 @@ public class OfferingSearchActivity extends AppCompatActivity{
             back_button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(OfferingSearchActivity.this, CoursePageActivity.class);
+                    Intent intent = new Intent(StudentSearchActivity.this, Class_Info_Activity.class);
                     intent.putExtra("course_id", course_id1);
+                    intent.putExtra("offer_id", offer_id1);
                     startActivity(intent);
                 }
             });
         }
     }
 }
+
