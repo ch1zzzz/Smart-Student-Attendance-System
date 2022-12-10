@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 //If any of the field is empty, raise a notification
                 if(username.isEmpty() || password.isEmpty() || confirm_password.isEmpty() || first_name.isEmpty() || last_name.isEmpty() || email.isEmpty()){
-                    Toast.makeText(SignUpActivity.this, "Please enter all the required field", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Please enter all the required fields", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //Compare Password with confirm Password
