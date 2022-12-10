@@ -60,6 +60,15 @@ public class OfferingSearchActivity extends AppCompatActivity{
                     }
                 }
             });
+
+            back_button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(OfferingSearchActivity.this, CoursePageActivity.class);
+                    intent.putExtra("course_id", course_id1);
+                    startActivity(intent);
+                }
+            });
         }
     }
 }
