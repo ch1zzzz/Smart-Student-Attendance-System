@@ -2,12 +2,8 @@ package com.example.ssas_project;
 
 import android.os.Bundle;
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -16,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.CourseOffering;
-import com.example.ssas_project.entity.Student;
 
 import java.util.ArrayList;
-
 import java.util.List;
+
 public class DeleteOfferingActivity extends AppCompatActivity{
     private EditText course_off_id1;
     private ListView offering_list;

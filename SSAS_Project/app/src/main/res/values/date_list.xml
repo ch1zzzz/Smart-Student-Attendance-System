@@ -2,11 +2,12 @@
 
 <resources>
     <string-array name="student_status_list">
-        <item>please-select</item>
+        <item>please-select-status</item>
         <item>freshman</item>
         <item>sophomore</item>
         <item>junior</item>
         <item>senior</item>
-        <item>graduate</item>
+        <item>master</item>
+        <item>doctor</item>
     </string-array>
 </resources>

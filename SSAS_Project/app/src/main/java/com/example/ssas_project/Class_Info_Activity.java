@@ -63,15 +63,15 @@ public class Class_Info_Activity extends AppCompatActivity {
         }
         else {
             Bundle bundle = getIntent().getExtras();
-            String search_class_offering = bundle.getString("offer_id");
-            String back_string = bundle.getString("course_id");
+            String offering_id = bundle.getString("offer_id");
+            String course_id1 = bundle.getString("course_id");
 
 
             //        int search_class_offering = 1;
 
             //Update the info
-            CourseOffering offer1 = myDAO.getCourseOffering(Integer.parseInt(search_class_offering));
-            Course course = myDAO.getCourse(Integer.parseInt(back_string));
+            CourseOffering offer1 = myDAO.getCourseOffering(Integer.parseInt(offering_id));
+            Course course = myDAO.getCourse(Integer.parseInt(course_id1));
             edit_class_name1.setText(course.getName());
 
             String offer_id = String.format("Class Offering ID: %s", offer1.getId());
@@ -83,7 +83,7 @@ public class Class_Info_Activity extends AppCompatActivity {
 
             ArrayList<Student> array_student = new ArrayList<>();
             List<List<Integer>> student_list = new ArrayList<>();
-            student_list.add(myDAO.getEnrollStudents(Integer.parseInt(search_class_offering)));
+            student_list.add(myDAO.getEnrollStudents(Integer.parseInt(offering_id)));
 
             for (int i = 0; i < student_list.size(); i++) {
                 List<Integer> list = student_list.get(i);
@@ -131,7 +131,7 @@ public class Class_Info_Activity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getApplicationContext(), StudentView.class);
                     intent.putExtra("student_id", String.valueOf(array_student.get(i).getId()));
-                    intent.putExtra("offer_id", search_class_offering);
+                    intent.putExtra("offer_id", offering_id);
                     startActivity(intent);
                 }
             });
@@ -140,7 +140,8 @@ public class Class_Info_Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getApplicationContext(), AddStudentActivity.class);
-                    intent.putExtra("offer_id", search_class_offering);
+                    intent.putExtra("course_id", course_id1);
+                    intent.putExtra("offer_id", offering_id);
                     startActivity(intent);
                 }
             });
@@ -148,8 +149,9 @@ public class Class_Info_Activity extends AppCompatActivity {
             del_student1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), AddStudentActivity.class);
-                    intent.putExtra("offer_id", search_class_offering);
+                    Intent intent = new Intent(getApplicationContext(), DeleteStudentActivity.class);
+                    intent.putExtra("offer_id", offering_id);
+                    intent.putExtra("course_id", course_id1);
                     startActivity(intent);
                 }
             });
@@ -159,7 +161,7 @@ public class Class_Info_Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Class_Info_Activity.this, CoursePageActivity.class);
-                    intent.putExtra("course_id", back_string);
+                    intent.putExtra("course_id", course_id1);
                     startActivity(intent);
                 }
             });

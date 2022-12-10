@@ -18,6 +18,7 @@ import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.CourseOffering;
 import com.example.ssas_project.entity.Student;
+import com.example.ssas_project.entity.Types;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,37 @@ public class AddStudentActivity extends AppCompatActivity {
 
         myDAO = new MyDAO(this);
 
+        Bundle bundle = getIntent().getExtras();
+        String course_id1 = bundle.getString("course_id");
+        String offering_id1 = bundle.getString("offer_id");
 
+        add_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = student_id.getText().toString();
+                String name1 = student_name1.getText().toString();
+                String email = student_email1.getText().toString();
+                String payment = student_payment.getText().toString();
+                Types.StudentStatus status = Types.StudentStatus.valueOf(student_status1.getSelectedItem().toString());
+                Student s1 = new Student(Integer.parseInt(id),name1, email, status, payment);
+                myDAO.insertStudent(s1);
+                myDAO.insertEnroll(Integer.parseInt(id),Integer.parseInt(offering_id1));
+                Intent intent = new Intent(AddStudentActivity.this, Class_Info_Activity.class);
+                intent.putExtra("course_id", course_id1);
+                intent.putExtra("offer_id", offering_id1);
+                startActivity(intent);
+            }
+        });
+
+        back_button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddStudentActivity.this, Class_Info_Activity.class);
+                intent.putExtra("course_id", course_id1);
+                intent.putExtra("offer_id", offering_id1);
+                startActivity(intent);
+            }
+        });
 
     }
 }
