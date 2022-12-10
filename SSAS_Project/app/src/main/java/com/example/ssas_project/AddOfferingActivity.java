@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,11 +54,23 @@ public class AddOfferingActivity extends AppCompatActivity{
                     String id = offer_id1.getText().toString();
                     String stu_num = student_num1.getText().toString();
                     String classroom = class_room1.getText().toString();
-                    CourseOffering c1 = new CourseOffering(Integer.parseInt(id), Integer.parseInt(search_class_offering), Integer.parseInt(stu_num), classroom);
-                    myDAO.insertCourseOffering(c1);
-                    Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
-                    intent.putExtra("course_id", search_class_offering);
-                    startActivity(intent);
+                    if(id.isEmpty() || stu_num.isEmpty() || classroom.isEmpty()){
+                        Toast.makeText(AddOfferingActivity.this, "Please enter all the required field!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        CourseOffering id_verify = myDAO.getCourseOffering(Integer.parseInt(id));
+                        if(id_verify == null) {
+                            CourseOffering c1 = new CourseOffering(Integer.parseInt(id), Integer.parseInt(search_class_offering), Integer.parseInt(stu_num), classroom);
+                            myDAO.insertCourseOffering(c1);
+                            Toast.makeText(AddOfferingActivity.this, "Course Offering "+id+" was added!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
+                            intent.putExtra("course_id", search_class_offering);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(AddOfferingActivity.this, "Course Offering already exist!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             });
 

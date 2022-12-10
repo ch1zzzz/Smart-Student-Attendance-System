@@ -106,7 +106,8 @@ public class Class_Info_Activity extends AppCompatActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String name = search_name1.getText().toString();
-                    adapter.getFilter().filter(name);
+//                    if()
+                    
                 }
 
                 @Override

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -71,10 +72,22 @@ public class DeleteOfferingActivity extends AppCompatActivity{
                 @Override
                 public void onClick(View view) {
                     String del_offer = course_off_id1.getText().toString();
-                    myDAO.deleteCourseOffering(Integer.parseInt(del_offer));
-                    Intent intent = new Intent(DeleteOfferingActivity.this, CoursePageActivity.class);
-                    intent.putExtra("course_id", search_class_offering);
-                    startActivity(intent);
+                    if(del_offer.isEmpty()){
+                        Toast.makeText(DeleteOfferingActivity.this, "Please enter the required field!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        CourseOffering id_verify = myDAO.getCourseOffering(Integer.parseInt(del_offer));
+                        if(id_verify != null) {
+                            myDAO.deleteCourseOffering(Integer.parseInt(del_offer));
+                            Toast.makeText(DeleteOfferingActivity.this, "Course Offering "+del_offer+" was deleted!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(DeleteOfferingActivity.this, CoursePageActivity.class);
+                            intent.putExtra("course_id", search_class_offering);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(DeleteOfferingActivity.this, "Class offering does not exist!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             });
         }
