@@ -42,6 +42,11 @@ public class StudentIDLookup extends AppCompatActivity {
         calendar.set(2022, 11, 5, 19,0,0);
         date = calendar.getTime();
         myDAO.insertTime(1, date);
+
+        calendar.set(2023, 0, 18, 19, 0 ,0 );
+        date = calendar.getTime();
+        myDAO.insertTime(3, date);
+
     }
 
 
@@ -76,6 +81,22 @@ public class StudentIDLookup extends AppCompatActivity {
                 Types.StudentStatus.junior, "Credit Card");
         myDAO.insertStudent(student4);
 
+        Student student5 = new Student(4, "Jordyn Brosemer", "jordyn@tufts.edu",
+                Types.StudentStatus.junior, "Credit Card");
+        myDAO.insertStudent(student5);
+
+        Student student6 = new Student(5, "Yongqiang Zuo", "yqz2@tufts.edu",
+                Types.StudentStatus.junior, "Credit Card");
+        myDAO.insertStudent(student6);
+
+        Student student7 = new Student(6, "Bowang Yan", "bowang@tufts.edu",
+                Types.StudentStatus.junior, "Credit Card");
+        myDAO.insertStudent(student7);
+
+        Student student8 = new Student(7, "Connor Mcgregor", "conor_suck@tufts.edu",
+                Types.StudentStatus.junior, "Credit Card");
+        myDAO.insertStudent(student8);
+
         //Create Testing Database for Course Offering
         Course c1 = new Course(1, "CS111 OS", false, 1);
         myDAO.insertCourse(c1);
@@ -92,7 +113,12 @@ public class StudentIDLookup extends AppCompatActivity {
         //Enroll Students
         myDAO.insertEnroll(1, 3);
         myDAO.insertEnroll(2, 3);
+        //Enroll Students in Course Offering 3
         myDAO.insertEnroll(3, 3);
+        myDAO.insertEnroll(3, 4);
+        myDAO.insertEnroll(3, 5);
+        myDAO.insertEnroll(3, 6);
+        myDAO.insertEnroll(3, 7);
 
         InsertTime();
         insertAttendance();
@@ -100,9 +126,17 @@ public class StudentIDLookup extends AppCompatActivity {
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(2023, 1, 18, 19, 0, 0);
+
                 String id = edit_id.getText().toString();
-                Intent intent = new Intent(StudentIDLookup.this, DateRange.class);
+                Intent intent = new Intent(StudentIDLookup.this, MarkAbsence.class);
                 intent.putExtra("offer_id", id);
+                intent.putExtra("month", calendar.get(Calendar.MONTH));
+                intent.putExtra("year", calendar.get(Calendar.YEAR));
+                intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
+                intent.putExtra("hourOfDay", calendar.get(Calendar.HOUR_OF_DAY));
+                intent.putExtra("minute", calendar.get(Calendar.MINUTE));
                 startActivity(intent);
             }
         });
