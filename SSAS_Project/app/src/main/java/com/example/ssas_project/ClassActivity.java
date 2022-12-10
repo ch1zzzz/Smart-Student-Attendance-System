@@ -1,8 +1,10 @@
 package com.example.ssas_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,6 +18,7 @@ import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.Course;
 import com.example.ssas_project.entity.CourseOffering;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -87,9 +90,23 @@ public class ClassActivity extends AppCompatActivity {
         extract_data_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ClassActivity.this, "Downloading All Data as csv file", Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(ClassActivity.this, CalendarActivity.class);
-                //startActivity(intent);
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                i.setType("message/rfc822");
+
+                String filename = Constants.DATABASE_NAME;
+                String pathname = getApplicationContext().getApplicationInfo().dataDir + "/databases";
+                String fileLocation = pathname + "/" + filename;
+                File data = new File(fileLocation);
+                Uri uri = FileProvider.getUriForFile(getApplicationContext(), "com.example.ssas_project.provider", data);
+                i.putExtra(Intent.EXTRA_SUBJECT, "SSAS DATA");
+                i.putExtra(Intent.EXTRA_TEXT   , "The attachment contains the database file for App SSAS.");
+                i.putExtra(Intent.EXTRA_STREAM, uri);
+                try {
+                    startActivity(Intent.createChooser(i, "Downloading All Data And Send Mail"));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(ClassActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
