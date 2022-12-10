@@ -49,7 +49,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_email_input" />
+        app:layout_constraintTop_toBottomOf="@+id/student_email_input"
+        android:entries="@array/student_status_list"/>
 
     <EditText
         android:id="@+id/student_payment_input"

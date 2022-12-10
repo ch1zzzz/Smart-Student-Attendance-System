@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string-array name="date_list_view112">
-        <item>9/7/2022</item>
-        <item>9/12/2022</item>
-        <item>9/14/2022</item>
-        <item>9/19/2022</item>
-        <item>9/21/2022</item>
-        <item>9/26/2022</item>
-        <item>9/28/2022</item>
-        <item>10/3/2022</item>
-        <item>10/5/2022</item>
-        <item>10/10/2022</item>
-        <item>10/12/2022</item>
+    <string-array name="student_status_list">
+        <item>please-select</item>
+        <item>freshman</item>
+        <item>sophomore</item>
+        <item>junior</item>
+        <item>senior</item>
+        <item>graduate</item>
     </string-array>
 </resources>

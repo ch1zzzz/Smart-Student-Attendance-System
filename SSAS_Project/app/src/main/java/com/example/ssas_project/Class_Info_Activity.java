@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
+import com.example.ssas_project.entity.Course;
 import com.example.ssas_project.entity.CourseOffering;
 import com.example.ssas_project.entity.Student;
 
@@ -22,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Class_Info_Activity extends AppCompatActivity {
-    private TextView date_title1, edit_class_name1, class_date_show1;
-    private TextView class_offid_title1, class_offering_id, class_student_num1;
-    private Button back_button1, date_view1, add_student1;
+    private TextView  edit_class_name1, class_date_show1;
+    private TextView class_offering_id, class_student_num1;
+    private Button back_button1, date_view1, add_student1, del_student1;
     private EditText search_name1;
     private DAO myDAO;
     private ListView student_view_list;
@@ -49,6 +50,8 @@ public class Class_Info_Activity extends AppCompatActivity {
         student_view_list = findViewById(R.id.student_list1);
         class_offering_id = findViewById(R.id.class_offering_id1);
         search_name1 = findViewById(R.id.search_name1);
+        add_student1 = findViewById(R.id.add_student);
+        del_student1 = findViewById(R.id.delete_student);
 
 //        setSupportActionBar(student_view_list);
 
@@ -68,12 +71,13 @@ public class Class_Info_Activity extends AppCompatActivity {
 
             //Update the info
             CourseOffering offer1 = myDAO.getCourseOffering(Integer.parseInt(search_class_offering));
-            edit_class_name1.setText("" + offer1.getCourse_id());
+            Course course = myDAO.getCourse(Integer.parseInt(back_string));
+            edit_class_name1.setText(course.getName());
 
-            String offer_id = String.format("class offering ID: %s", offer1.getId());
+            String offer_id = String.format("Class Offering ID: %s", offer1.getId());
             class_offering_id.setText("" + offer_id);
 
-            String stu_num = String.format("studentsNum: %s", offer1.getStudentsNum());
+            String stu_num = String.format("Max Student Num: %s", offer1.getStudentsNum());
             class_student_num1.setText("" + stu_num);
 
 
@@ -111,21 +115,40 @@ public class Class_Info_Activity extends AppCompatActivity {
                 }
             });
 
-            date_view1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Class_Info_Activity.this, Class_date_Activity.class);
-                    intent.putExtra("course_id", search_class_offering);
-                    pre_intent.putExtra("offer_id", back_string);
-                    startActivity(intent);
-                }
-            });
+            // date select button
+//            date_view1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(Class_Info_Activity.this, Class_date_Activity.class);
+//                    intent.putExtra("course_id", search_class_offering);
+//                    pre_intent.putExtra("offer_id", back_string);
+//                    startActivity(intent);
+//                }
+//            });
 
             student_view_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getApplicationContext(), StudentView.class);
                     intent.putExtra("student_id", String.valueOf(array_student.get(i).getId()));
+                    intent.putExtra("offer_id", search_class_offering);
+                    startActivity(intent);
+                }
+            });
+
+            add_student1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), AddStudentActivity.class);
+                    intent.putExtra("offer_id", search_class_offering);
+                    startActivity(intent);
+                }
+            });
+
+            del_student1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), AddStudentActivity.class);
                     intent.putExtra("offer_id", search_class_offering);
                     startActivity(intent);
                 }

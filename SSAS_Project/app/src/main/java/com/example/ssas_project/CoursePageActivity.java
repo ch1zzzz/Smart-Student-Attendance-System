@@ -17,6 +17,7 @@ import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.CourseOffering;
 import com.example.ssas_project.entity.Student;
+import com.example.ssas_project.entity.Course;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class CoursePageActivity extends AppCompatActivity {
         course_offering_list = findViewById(R.id.course_offering_list);
         back_button1 = findViewById(R.id.back_button121);
         add_offering1 = findViewById(R.id.add_course_offering);
+        del_offering = findViewById(R.id.del_course_offering2);
 
         myDAO = new MyDAO(this);
 
@@ -49,6 +51,9 @@ public class CoursePageActivity extends AppCompatActivity {
 
             Bundle bundle = getIntent().getExtras();
             String search_class_offering = bundle.getString("course_id");
+
+            Course course = myDAO.getCourse(Integer.parseInt(search_class_offering));
+            course_name.setText(course.getName());
 
             //Update List View
             ArrayList<CourseOffering> array_courseoffering = new ArrayList<>();
@@ -79,7 +84,7 @@ public class CoursePageActivity extends AppCompatActivity {
             del_offering.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(CoursePageActivity.this, AddOfferingActivity.class);
+                    Intent intent = new Intent(CoursePageActivity.this, DeleteOfferingActivity.class);
                     intent.putExtra("course_id",search_class_offering);
                     startActivity(intent);
                 }
