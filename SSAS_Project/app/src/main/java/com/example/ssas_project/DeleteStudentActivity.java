@@ -72,6 +72,7 @@ public class DeleteStudentActivity extends AppCompatActivity{
                         List<Integer> check_list = myDAO.getEnrollStudents(Integer.parseInt(offering_id1));
                         if(check_list.contains(Integer.parseInt(del_student))){
                             myDAO.deleteEnroll(Integer.parseInt(offering_id1), Integer.parseInt(del_student));
+                            Toast.makeText(DeleteStudentActivity.this, "Student was deleted!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(DeleteStudentActivity.this, Class_Info_Activity.class);
                             intent.putExtra("course_id", course_id1);
                             intent.putExtra("offer_id", offering_id1);

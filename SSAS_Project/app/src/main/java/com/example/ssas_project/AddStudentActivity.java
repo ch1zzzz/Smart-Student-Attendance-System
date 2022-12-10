@@ -54,16 +54,17 @@ public class AddStudentActivity extends AppCompatActivity {
                 String id = student_id.getText().toString();
                 String name1 = student_name1.getText().toString();
                 String email = student_email1.getText().toString();
-                String payment = student_payment.getText().toString();
                 String status = student_status1.getSelectedItem().toString();
-                Types.StudentStatus status1 = Types.StudentStatus.valueOf(status);
-                if(id.isEmpty() || name1.isEmpty() || email.isEmpty() || payment.isEmpty()|| status == "please-select-status"){
+                String payment = student_payment.getText().toString();
+                if(id.isEmpty() || name1.isEmpty() || email.isEmpty() || payment.isEmpty()|| status.equals("please-select-status")){
                     Toast.makeText(AddStudentActivity.this, "Please enter all the required field!", Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     String email1 = student_email1.getText().toString().trim();
                     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                    if (email.matches(emailPattern))
+                    Types.StudentStatus status1 = Types.StudentStatus.valueOf(status);
+                    if (email1.matches(emailPattern))
                     {
                         // Check student
                         Student student_verify1 = myDAO.getStudent(Integer.parseInt(id));
