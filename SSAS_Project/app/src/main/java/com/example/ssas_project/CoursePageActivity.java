@@ -110,6 +110,13 @@ public class CoursePageActivity extends AppCompatActivity {
                 }
             });
 
+            back_button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(CoursePageActivity.this, ClassActivity.class);
+                    startActivity(intent);
+                }
+            });
 
 
             //        back_button1.setOnClickListener(new View.OnClickListener() {

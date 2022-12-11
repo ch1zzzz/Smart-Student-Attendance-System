@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -107,6 +108,15 @@ public class ClassActivity extends AppCompatActivity {
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(ClassActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        edit_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(getApplicationContext(), CoursePageActivity.class);
+                intent.putExtra("course_id", String.valueOf(array_courses.get(position).getId()));
+                startActivity(intent);
             }
         });
     }

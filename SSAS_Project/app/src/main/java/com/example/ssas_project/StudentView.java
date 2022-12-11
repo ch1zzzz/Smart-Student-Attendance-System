@@ -51,13 +51,7 @@ public class StudentView extends AppCompatActivity {
         else{
             //Set on click listener for Back Button
             //Click listener to the back button
-            edit_backbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(StudentView.this, StudentIDLookup.class);
-                    startActivity(intent);
-                }
-            });
+
 
             Bundle bundle = getIntent().getExtras();
             String search_id = bundle.getString("student_id");
@@ -71,8 +65,6 @@ public class StudentView extends AppCompatActivity {
 
             String str = String.format("Student ID: %s", search_id);
             edit_studentid.setText(str);
-
-
 
 
             //Update List View
@@ -99,6 +91,15 @@ public class StudentView extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), StudentData.class);
                     intent.putExtra("offer_id", String.valueOf(array_courseoffering.get(position).getId()));
                     intent.putExtra("student_id", search_id);
+                    startActivity(intent);
+                }
+            });
+
+            edit_backbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(StudentView.this, Class_Info_Activity.class);
+                    //intent.putExtra("offer_id", )
                     startActivity(intent);
                 }
             });
