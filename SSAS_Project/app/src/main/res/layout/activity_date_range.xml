@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_foreground"
+    tools:context=".DateRange">
+
+    <TextView
+        android:id="@+id/daterange_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Select Time for Course Offering"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/daterange_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_banner"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
+        android:text="Set start range"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/daterange_start_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_banner"
+        android:layout_toRightOf="@+id/daterange_end"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="80dp"
+        android:background="@null"
+        android:text="Date"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/daterange_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_start"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
+        android:text="Set end range"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/daterange_end_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_start"
+        android:layout_toRightOf="@+id/daterange_end"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="80dp"
+        android:background="@null"
+        android:text="Date"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/daterange_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_end"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
+        android:text="Set time"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/daterange_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_end"
+        android:layout_toRightOf="@+id/daterange_end"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="80dp"
+        android:background="@null"
+        android:text="Time"
+        android:textAllCaps="false"/>
+
+    <CheckBox
+        android:id="@+id/daterange_mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_time_text"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Monday"/>
+
+    <CheckBox
+        android:id="@+id/daterange_tue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_time_text"
+        android:layout_toRightOf="@id/daterange_mon"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Tuesday"/>
+
+    <CheckBox
+        android:id="@+id/daterange_wed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_time_text"
+        android:layout_toRightOf="@id/daterange_tue"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Wednesday"/>
+
+    <CheckBox
+        android:id="@+id/daterange_th"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_mon"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Thursday"/>
+
+    <CheckBox
+        android:id="@+id/daterange_fri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_mon"
+        android:layout_toRightOf="@id/daterange_th"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Friday"/>
+
+    <CheckBox
+        android:id="@+id/daterange_sat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_mon"
+        android:layout_toRightOf="@id/daterange_fri"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Saturday"/>
+
+    <CheckBox
+        android:id="@+id/daterange_sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_th"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Sunday"/>
+
+    <Button
+        android:id="@+id/daterange_insertDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daterange_sun"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="Set Event"
+        android:textAllCaps="false" />
+
+</RelativeLayout>

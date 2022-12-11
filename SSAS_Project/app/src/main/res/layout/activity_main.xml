@@ -39,14 +39,6 @@
         android:paddingTop="20dp"
         android:paddingLeft="20dp"/>
 
-    <TextView
-        android:id="@+id/Login_recover"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
 
     <TextView
         android:id="@+id/Login_register"
@@ -61,10 +53,9 @@
         android:id="@+id/Login_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:textAlignment="center"
-        android:text="Login"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center"
-        />
+        android:layout_marginTop="5dp"
+        android:text="Login"
+        android:textAlignment="center" />
 
 </LinearLayout>

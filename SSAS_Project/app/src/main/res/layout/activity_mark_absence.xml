@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MarkAbsence">
+
+    <TextView
+        android:id="@+id/markabsence_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Attendance Table"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/markabsence_offerid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/markabsence_banner"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Course Offering Name"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/markabsence_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/markabsence_offerid"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Date"
+        android:textSize="15dp"/>
+
+    <ScrollView
+        android:id="@+id/markabsence_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
+        android:scrollbars="none"
+        android:layout_weight="1"
+        android:layout_below="@id/markabsence_date"
+        android:layout_marginTop="30dp">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TableLayout
+                android:id="@+id/markabsence_table"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                android:layout_centerHorizontal="true">
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/markabsence_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/markabsence_scroll"
+        android:layout_margin="20dp"
+        android:text="Back"
+        android:textAllCaps="false"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/markabsence_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/markabsence_scroll"
+        android:layout_toRightOf="@+id/markabsence_back"
+        android:layout_margin="20dp"
+        android:text="Submit"
+        android:textAllCaps="false"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/markabsence_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/markabsence_scroll"
+        android:layout_toRightOf="@+id/markabsence_submit"
+        android:layout_margin="20dp"
+        android:text="Update"
+        android:textAllCaps="false"/>
+
+
+</RelativeLayout>

@@ -4,4 +4,6 @@
     <string name="add_class">Add Class</string>
     <string name="welcome_teacher">Welcome Teacher</string>
     <string name="sign_out">Sign Out</string>
+    <string name="student_view">Student View</string>
+
 </resources>

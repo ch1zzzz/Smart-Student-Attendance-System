@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         //Initialize variables with the layout ID
         edit_username = findViewById(R.id.Login_username);
         edit_password = findViewById(R.id.Login_password);
-        edit_recover = findViewById(R.id.Login_recover);
         edit_register = findViewById(R.id.Login_register);
         edit_login = findViewById(R.id.Login_button);
 
@@ -45,15 +44,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //Click listener to the forgot pasword icon
-        edit_recover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RecoverActivity.class);
                 startActivity(intent);
             }
         });
