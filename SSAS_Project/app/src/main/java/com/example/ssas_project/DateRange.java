@@ -78,7 +78,6 @@ public class DateRange extends AppCompatActivity {
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
         //Retrieve ID from the last activity
         Intent pre_intent = getIntent();
         if(pre_intent.getExtras() == null){
