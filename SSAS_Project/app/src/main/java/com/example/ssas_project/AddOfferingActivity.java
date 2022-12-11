@@ -47,7 +47,7 @@ public class AddOfferingActivity extends AppCompatActivity{
 
             Bundle bundle = getIntent().getExtras();
             String search_class_offering = bundle.getString("course_id");
-
+            String id = offer_id1.getText().toString();
             add_offer1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -64,7 +64,10 @@ public class AddOfferingActivity extends AppCompatActivity{
                             myDAO.insertCourseOffering(c1);
                             Toast.makeText(AddOfferingActivity.this, "Course Offering "+id+" was added!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
-                            intent.putExtra("course_id", search_class_offering);
+                            Bundle extras = new Bundle();
+                            extras.putString("course_id", search_class_offering);
+                            extras.putString("offer_id", id);
+                            intent.putExtras(extras);
                             startActivity(intent);
                         }
                         else {
@@ -78,7 +81,10 @@ public class AddOfferingActivity extends AppCompatActivity{
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
-                    intent.putExtra("course_id", search_class_offering);
+                    Bundle extras = new Bundle();
+                    extras.putString("course_id", search_class_offering);
+                    extras.putString("offer_id", id);
+                    intent.putExtras(extras);
                     startActivity(intent);
                 }
             });

@@ -29,42 +29,6 @@ public class StudentIDLookup extends AppCompatActivity {
     private EditText edit_id;
     private Button edit_button;
 
-    public void InsertTime() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2022, 11, 3, 12,0,0);
-        Date date = calendar.getTime();
-        myDAO.insertTime(1, date);
-
-        calendar.set(2022, 11, 4, 6,0,0);
-        date = calendar.getTime();
-        myDAO.insertTime(1, date);
-
-        calendar.set(2022, 11, 5, 19,0,0);
-        date = calendar.getTime();
-        myDAO.insertTime(1, date);
-
-        calendar.set(2023, 0, 18, 19, 0 ,0 );
-        date = calendar.getTime();
-        myDAO.insertTime(3, date);
-
-    }
-
-
-    public void insertAttendance() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2022, 11, 3, 12,0,0);
-        Date date = calendar.getTime();
-        myDAO.insertAttendance(3, 1, date, true);
-
-        calendar.set(2022, 11, 4, 6,0,0);
-        date = calendar.getTime();
-        myDAO.insertAttendance(3, 1, date, false);
-
-        calendar.set(2022, 11, 5, 19,0,0);
-        date = calendar.getTime();
-        myDAO.insertAttendance(3, 1, date, true);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,53 +39,6 @@ public class StudentIDLookup extends AppCompatActivity {
 
         //Initialize DAO
         myDAO = new MyDAO(this);
-
-        //Create Testing Database for students
-        Student student4 = new Student(3, "Duc Nguyen", "dnguye22@tufts.edu",
-                Types.StudentStatus.junior, "Credit Card");
-        myDAO.insertStudent(student4);
-
-        Student student5 = new Student(4, "Jordyn Brosemer", "jordyn@tufts.edu",
-                Types.StudentStatus.junior, "Credit Card");
-        myDAO.insertStudent(student5);
-
-        Student student6 = new Student(5, "Yongqiang Zuo", "yqz2@tufts.edu",
-                Types.StudentStatus.junior, "Credit Card");
-        myDAO.insertStudent(student6);
-
-        Student student7 = new Student(6, "Bowang Yan", "bowang@tufts.edu",
-                Types.StudentStatus.junior, "Credit Card");
-        myDAO.insertStudent(student7);
-
-        Student student8 = new Student(7, "Connor Mcgregor", "conor_suck@tufts.edu",
-                Types.StudentStatus.junior, "Credit Card");
-        myDAO.insertStudent(student8);
-
-        //Create Testing Database for Course Offering
-        Course c1 = new Course(1, "CS111 OS", false, 1);
-        myDAO.insertCourse(c1);
-
-        CourseOffering c2 = new CourseOffering(1, 1, 40, "JCC101");
-        myDAO.insertCourseOffering(c2);
-
-        CourseOffering c3 = new CourseOffering(2, 1, 30, "JCC102");
-        myDAO.insertCourseOffering(c3);
-
-        CourseOffering c4 = new CourseOffering(3, 1, 30, "JCC102");
-        myDAO.insertCourseOffering(c4);
-
-        //Enroll Students
-        myDAO.insertEnroll(1, 3);
-        myDAO.insertEnroll(2, 3);
-        //Enroll Students in Course Offering 3
-        myDAO.insertEnroll(3, 3);
-        myDAO.insertEnroll(3, 4);
-        myDAO.insertEnroll(3, 5);
-        myDAO.insertEnroll(3, 6);
-        myDAO.insertEnroll(3, 7);
-
-        InsertTime();
-        insertAttendance();
 
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override

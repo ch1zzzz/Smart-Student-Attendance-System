@@ -9,6 +9,7 @@ import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.CourseOffering;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Button;
@@ -35,6 +36,20 @@ public class DateActivity extends AppCompatActivity {
         back_to_classes = findViewById(R.id.back_to_classes);
         Intent pre_intent = getIntent();
         if(pre_intent.getExtras() == null){
+            back_to_calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
+                    startActivity(intent);
+                }
+            });
+            back_to_classes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(DateActivity.this, ClassActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
         else {
             Bundle bundle = getIntent().getExtras();
@@ -54,26 +69,43 @@ public class DateActivity extends AppCompatActivity {
             List<CourseOffering> daycourseofferings = new ArrayList<>();
             ArrayList<CourseOffering> dayCO = new ArrayList<>();
             daycourseofferings = myDAO.getCourseOfferingByDay(date);
-            for(int i = 0; i < daycourseofferings.size(); i ++) {
+            for (int i = 0; i < daycourseofferings.size(); i++) {
                 dayCO.add(daycourseofferings.get(i));
             }
             StudentViewListAdapter adapter = new StudentViewListAdapter(this, R.layout.student_class_item, dayCO);
             course_offering_date_list.setAdapter(adapter);
             course_offering_date_list.setClickable(true);
+
+            back_to_calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
+                    startActivity(intent);
+                }
+            });
+            back_to_classes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(DateActivity.this, ClassActivity.class);
+                    startActivity(intent);
+                }
+            });
+            course_offering_date_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                    List<Date> DateList = myDAO.getTime(dayCO.get(position).getId());
+                    for(int i = 1; i < DateList.size();i++) {
+                        System.out.println(DateList.get(i));
+                    }
+                    Intent intent = new Intent(getApplicationContext(), CoursePageActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putInt("month",month);
+                    extras.putInt("year",year);
+                    extras.putInt("dayOfMonth",dayOfMonth);
+                    intent.putExtra("course_id", String.valueOf(dayCO.get(position).getId()));
+                    startActivity(intent);
+                }
+            });
         }
-        back_to_calendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
-        back_to_classes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DateActivity.this, ClassActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
