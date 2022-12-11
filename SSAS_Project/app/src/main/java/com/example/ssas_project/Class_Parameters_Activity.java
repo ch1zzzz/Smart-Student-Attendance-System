@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ssas_project.database.DAO;
+import com.example.ssas_project.database.MyDAO;
+import com.example.ssas_project.entity.Course;
+
+import java.util.List;
 
 public class Class_Parameters_Activity extends AppCompatActivity {
     private DAO myDAO;
@@ -25,7 +29,7 @@ public class Class_Parameters_Activity extends AppCompatActivity {
         register_class_name = findViewById(R.id.register_classname2);
         register_class_id = findViewById(R.id.register_class_id);
         register_class_offerings = findViewById(R.id.register_class_offerings);
-
+        myDAO = new MyDAO(this);
 
         register_back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +49,20 @@ public class Class_Parameters_Activity extends AppCompatActivity {
                     Toast.makeText(Class_Parameters_Activity.this, "Please enter all the required field", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Intent intent = new Intent(Class_Parameters_Activity.this, ClassActivity.class);
-                    Bundle extras = new Bundle();
-                    extras.putString("id", id);
-                    extras.putString("name", name);
-                    extras.putString("offerings", offerings);
-                    intent.putExtras(extras);
-                    startActivity(intent);
+                    Course course_new = myDAO.getCourse(Integer.parseInt(id));
+                    if(course_new == null) {
+                        Intent intent = new Intent(Class_Parameters_Activity.this, ClassActivity.class);
+                        Bundle extras = new Bundle();
+                        extras.putString("id", id);
+                        extras.putString("name", name);
+                        extras.putString("offerings", offerings);
+                        Course temp = new Course(Integer.parseInt(id),name,true,Integer.parseInt(offerings));
+                        myDAO.insertCourse(temp);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(Class_Parameters_Activity.this, "Course ID already exists", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
