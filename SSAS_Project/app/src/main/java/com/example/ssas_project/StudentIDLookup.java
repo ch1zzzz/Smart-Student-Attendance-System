@@ -132,7 +132,6 @@ public class StudentIDLookup extends AppCompatActivity {
                 String id = edit_id.getText().toString();
                 Intent intent = new Intent(StudentIDLookup.this,CoursePageActivity.class);
                 intent.putExtra("course_id", id);
-                Intent intent = new Intent(StudentIDLookup.this, MarkAbsence.class);
                 intent.putExtra("offer_id", id);
                 intent.putExtra("month", calendar.get(Calendar.MONTH));
                 intent.putExtra("year", calendar.get(Calendar.YEAR));

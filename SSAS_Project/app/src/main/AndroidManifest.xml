@@ -111,18 +111,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".StudentIDLookup"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Class_Info_Activity"
             android:exported="true">
 
@@ -172,6 +160,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
             android:name=".CalendarActivity"
             android:exported="true">
             <meta-data
@@ -188,7 +177,6 @@
                 android:resource="@xml/file_paths"
                 />
         </provider>
-
     </application>
 
 </manifest>
