@@ -37,7 +37,7 @@ import java.util.Date;
 public class DateRange extends AppCompatActivity {
 
     private TextView start_text, end_text, time_text;
-    private Button insert_button, start_date, end_date, time_button;
+    private Button insert_button, start_date, end_date, time_button, back_button;
     private CheckBox mon_check, tue_check, wed_check, th_check, fri_check, sat_check, sun_check;
     private DAO myDAO;
 
@@ -69,6 +69,7 @@ public class DateRange extends AppCompatActivity {
         fri_check = findViewById(R.id.daterange_fri);
         sat_check = findViewById(R.id.daterange_sat);
         sun_check = findViewById(R.id.daterange_sun);
+        back_button = findViewById(R.id.back_button128);
 
 
         insert_button = findViewById(R.id.daterange_insertDate);
@@ -86,6 +87,7 @@ public class DateRange extends AppCompatActivity {
             //Retrieve value from last activity
             Bundle bundle = getIntent().getExtras();
             String offer_id = bundle.getString("offer_id");
+            String course_id = bundle.getString("course_id");
 
             //Start Date Button Select
             start_date.setOnClickListener(new View.OnClickListener() {
@@ -249,11 +251,21 @@ public class DateRange extends AppCompatActivity {
                             }
                         }
                         Toast.makeText(DateRange.this, "Events created", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DateRange.this, StudentIDLookup.class);
+                        Intent intent = new Intent(DateRange.this, Class_Info_Activity.class);
                         intent.putExtra("offer_id", offer_id);
                         startActivity(intent);
                     }
 
+                }
+            });
+
+            back_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(DateRange.this, Class_Info_Activity.class);
+                    intent.putExtra("offer_id", offer_id);
+                    intent.putExtra("course_id",course_id);
+                    startActivity(intent);
                 }
             });
         }

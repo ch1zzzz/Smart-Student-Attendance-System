@@ -25,7 +25,7 @@ import java.util.List;
 public class Class_Info_Activity extends AppCompatActivity {
     private TextView  edit_class_name1, class_date_show1;
     private TextView class_offering_id, class_student_num1;
-    private Button back_button1, student_search1, add_student1, del_student1;
+    private Button back_button1, student_search1, add_student1, del_student1, add_date;
     private EditText search_name1;
     private DAO myDAO;
     private ListView student_view_list;
@@ -51,6 +51,7 @@ public class Class_Info_Activity extends AppCompatActivity {
         student_search1 = findViewById(R.id.student_search);
         add_student1 = findViewById(R.id.add_student);
         del_student1 = findViewById(R.id.delete_student);
+        add_date = findViewById(R.id.date_view1);
 
 //        setSupportActionBar(student_view_list);
 
@@ -154,6 +155,16 @@ public class Class_Info_Activity extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(Class_Info_Activity.this, CoursePageActivity.class);
                     intent.putExtra("course_id", course_id1);
+                    startActivity(intent);
+                }
+            });
+
+            add_date.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), DateRange.class);
+                    intent.putExtra("course_id", course_id1);
+                    intent.putExtra("offer_id", offering_id);
                     startActivity(intent);
                 }
             });
