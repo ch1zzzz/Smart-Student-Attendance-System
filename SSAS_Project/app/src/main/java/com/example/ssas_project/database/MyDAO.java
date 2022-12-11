@@ -614,4 +614,21 @@ public class MyDAO implements DAO{
             return false;
         }
     }
+
+    @Override
+    public String[] getUserInfo(String username) {
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " +
+                Constants.TABLE_LOGIN + " where username = ?", new String[]{username});
+        String[] info = new String[3];
+        if (cursor.moveToFirst()) {
+            do {
+                info[0] = cursor.getString(cursor.getColumnIndexOrThrow("first_name"));
+                info[1] = cursor.getString(cursor.getColumnIndexOrThrow("last_name"));
+                info[2] = cursor.getString(cursor.getColumnIndexOrThrow("email_addr"));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return info;
+    }
 }

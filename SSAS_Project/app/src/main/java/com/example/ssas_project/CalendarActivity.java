@@ -47,16 +47,13 @@ public class CalendarActivity extends AppCompatActivity {
                 // display the selected date by using a toast
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, dayOfMonth);
-                Date date = calendar.getTime();
                 Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
                 classesOnXDay.setText("Classes on " + (month+1) + " " + dayOfMonth + " " + year);
-                /*
-                courseOffering_DayList = myDAO.getCourseOfferingByDay(date);
-                for (int i = 0; i < courseOffering_DayList.size(); i++) {
-                    CourseOffering temp = courseOffering_DayList.get(i);
-                    array_courses.add(temp);
-                }
-                 */
+                Intent intent = new Intent(CalendarActivity.this, DateActivity.class);
+                intent.putExtra("month", month);
+                intent.putExtra("year", year);
+                intent.putExtra("dayOfMonth", dayOfMonth);
+                startActivity(intent);
             }
         });
         back_to_class.setOnClickListener(new View.OnClickListener() {

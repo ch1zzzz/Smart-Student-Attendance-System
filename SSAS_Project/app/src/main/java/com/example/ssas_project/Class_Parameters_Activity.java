@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ssas_project.database.DAO;
 
@@ -40,14 +41,18 @@ public class Class_Parameters_Activity extends AppCompatActivity {
                 String id = register_class_id.getText().toString();
                 String name = register_class_name.getText().toString();
                 String offerings = register_class_offerings.getText().toString();
-
-                Intent intent = new Intent(Class_Parameters_Activity.this,ClassActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("id",id);
-                extras.putString("name",name);
-                extras.putString("offerings",offerings);
-                intent.putExtras(extras);
-                startActivity(intent);
+                if(id.isEmpty() || name.isEmpty() || offerings.isEmpty()){
+                    Toast.makeText(Class_Parameters_Activity.this, "Please enter all the required field", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(Class_Parameters_Activity.this, ClassActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putString("id", id);
+                    extras.putString("name", name);
+                    extras.putString("offerings", offerings);
+                    intent.putExtras(extras);
+                    startActivity(intent);
+                }
             }
         });
     }

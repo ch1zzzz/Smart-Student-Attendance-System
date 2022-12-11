@@ -1,20 +1,24 @@
 package com.example.ssas_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ssas_project.database.DAO;
 import com.example.ssas_project.database.MyDAO;
 import com.example.ssas_project.entity.Course;
 import com.example.ssas_project.entity.CourseOffering;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,7 +26,7 @@ import java.util.List;
 public class ClassActivity extends AppCompatActivity {
     private DAO myDAO;
     private ListView edit_listview;
-    private Button sign_out_button, add_class_button, calendar_button ;
+    private Button sign_out_button, add_class_button, calendar_button, extract_data_button ;
     private TextView banner;
     List list = new ArrayList();
     ArrayAdapter adapter;
@@ -37,7 +41,9 @@ public class ClassActivity extends AppCompatActivity {
         edit_listview = findViewById(R.id.teacher_course_list_view);
         add_class_button = findViewById(R.id.newclass_button);
         calendar_button = findViewById(R.id.calendar_button);
+        extract_data_button = findViewById(R.id.Extract_Database);
         banner = findViewById(R.id.class_banner);
+        //banner.setText("Welcome " + myDAO)
         Intent intent = getIntent();
         if(intent.getExtras()!=null) {
             Bundle extras = intent.getExtras();
@@ -79,6 +85,28 @@ public class ClassActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ClassActivity.this, CalendarActivity.class);
                 startActivity(intent);
+            }
+        });
+        extract_data_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                i.setType("message/rfc822");
+
+                String filename = Constants.DATABASE_NAME;
+                String pathname = getApplicationContext().getApplicationInfo().dataDir + "/databases";
+                String fileLocation = pathname + "/" + filename;
+                File data = new File(fileLocation);
+                Uri uri = FileProvider.getUriForFile(getApplicationContext(), "com.example.ssas_project.provider", data);
+                i.putExtra(Intent.EXTRA_SUBJECT, "SSAS DATA");
+                i.putExtra(Intent.EXTRA_TEXT   , "The attachment contains the database file for App SSAS.");
+                i.putExtra(Intent.EXTRA_STREAM, uri);
+                try {
+                    startActivity(Intent.createChooser(i, "Downloading All Data And Send Mail"));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(ClassActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

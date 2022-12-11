@@ -119,4 +119,6 @@ public interface DAO {
     Boolean checkUsername(String username);
     //check if username and password exsits
     Boolean checkUserPass(String username, String password);
+    //get user's information
+    String[] getUserInfo(String username);
 }
