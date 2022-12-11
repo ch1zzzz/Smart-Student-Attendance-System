@@ -113,6 +113,7 @@ public class Class_Info_Activity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), StudentView.class);
                     intent.putExtra("student_id", String.valueOf(array_student.get(i).getId()));
                     intent.putExtra("offer_id", offering_id);
+                    intent.putExtra("course_id",course_id1);
                     startActivity(intent);
                 }
             });
