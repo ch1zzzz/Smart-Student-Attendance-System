@@ -44,7 +44,6 @@ public class AddOfferingActivity extends AppCompatActivity{
         if(pre_intent.getExtras() == null){
         }
         else {
-
             Bundle bundle = getIntent().getExtras();
             String search_class_offering = bundle.getString("course_id");
             String id = offer_id1.getText().toString();
@@ -65,7 +64,7 @@ public class AddOfferingActivity extends AppCompatActivity{
                             Toast.makeText(AddOfferingActivity.this, "Course Offering "+id+" was added!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AddOfferingActivity.this, CoursePageActivity.class);
                             Bundle extras = new Bundle();
-                            extras.putString("course_id", search_class_offering);
+                            extras.putString("course_id", bundle.getString("course_id"));
                             extras.putString("offer_id", id);
                             intent.putExtras(extras);
                             startActivity(intent);

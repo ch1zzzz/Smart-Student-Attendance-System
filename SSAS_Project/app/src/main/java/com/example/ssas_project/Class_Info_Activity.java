@@ -76,7 +76,7 @@ public class Class_Info_Activity extends AppCompatActivity {
             Bundle bundle = getIntent().getExtras();
             String offering_id = bundle.getString("offer_id");
             String course_id1 = bundle.getString("course_id");
-
+            System.out.println("COURSES" + course_id1);
 
             //        int search_class_offering = 1;
 
@@ -175,8 +175,11 @@ public class Class_Info_Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getApplicationContext(), DateRange.class);
-                    intent.putExtra("course_id", course_id1);
-                    intent.putExtra("offer_id", offering_id);
+                    Bundle extras = new Bundle();
+                    extras.putString("course_id", course_id1);
+                    extras.putString("offer_id", offering_id);
+                    System.out.println("CLass_info_courses " + course_id1);
+                    intent.putExtras(extras);
                     startActivity(intent);
                 }
             });

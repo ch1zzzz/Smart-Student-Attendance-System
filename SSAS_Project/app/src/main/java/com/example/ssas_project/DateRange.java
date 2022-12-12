@@ -78,7 +78,6 @@ public class DateRange extends AppCompatActivity {
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
         //Retrieve ID from the last activity
         Intent pre_intent = getIntent();
         if(pre_intent.getExtras() == null){
@@ -253,6 +252,7 @@ public class DateRange extends AppCompatActivity {
                         Toast.makeText(DateRange.this, "Events created", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(DateRange.this, Class_Info_Activity.class);
                         intent.putExtra("offer_id", offer_id);
+                        intent.putExtra("course_id", course_id);
                         startActivity(intent);
                     }
 
