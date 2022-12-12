@@ -252,6 +252,7 @@ public class DateRange extends AppCompatActivity {
                         Toast.makeText(DateRange.this, "Events created", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(DateRange.this, Class_Info_Activity.class);
                         intent.putExtra("offer_id", offer_id);
+                        intent.putExtra("course_id", course_id);
                         startActivity(intent);
                     }
 

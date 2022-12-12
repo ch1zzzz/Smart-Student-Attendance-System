@@ -90,7 +90,7 @@ public class MarkAbsence extends AppCompatActivity {
             String str1 = String.format("Course Offering ID: %s", offer_id);
             offerid.setText(str1);
 
-            String str2 = "Date: "+ month + "/" + dayOfMonth + "/" + year;
+            String str2 = "Date: "+ (month+1) + "/" + dayOfMonth + "/" + year;
             date.setText(str2);
 
             //Update Table
@@ -192,7 +192,7 @@ public class MarkAbsence extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Calendar calendar = Calendar.getInstance();
-                    calendar.set(year, month - 1, dayOfMonth, hourOfDay, minute, 0);
+                    calendar.set(year, month, dayOfMonth, hourOfDay, minute, 0);
                     Date date = calendar.getTime();
 
                     //Mark Attendance to the Database
@@ -200,7 +200,7 @@ public class MarkAbsence extends AppCompatActivity {
                         myDAO.insertAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
                     }
 
-                    Intent intent = new Intent(MarkAbsence.this, StudentIDLookup.class);
+                    Intent intent = new Intent(MarkAbsence.this, CalendarActivity.class);
                     //Send Data to next activity
                     intent.putExtra("offer_id", offer_id);
                     intent.putExtra("month", calendar.get(Calendar.MONTH));
@@ -219,7 +219,7 @@ public class MarkAbsence extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Calendar calendar = Calendar.getInstance();
-                    calendar.set(year, month - 1, dayOfMonth, hourOfDay, minute, 0);
+                    calendar.set(year, month, dayOfMonth, hourOfDay, minute, 0);
                     Date date = calendar.getTime();
 
                     //Mark Attendance to the Database
@@ -227,7 +227,7 @@ public class MarkAbsence extends AppCompatActivity {
                         myDAO.updateAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
                     }
 
-                    Intent intent = new Intent(MarkAbsence.this, StudentIDLookup.class);
+                    Intent intent = new Intent(MarkAbsence.this, CalendarActivity.class);
                     //Send Data to next activity
                     intent.putExtra("offer_id", offer_id);
                     intent.putExtra("month", month);
