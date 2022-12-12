@@ -8,7 +8,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,11 +23,12 @@ import com.example.ssas_project.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class Class_Info_Activity extends AppCompatActivity {
     private TextView  edit_class_name1, class_date_show1;
     private TextView class_offering_id, class_student_num1;
-    private Button back_button1, student_search1, add_student1, del_student1, add_date;
+    private Button back_button1, student_search1, add_student1, del_student1, add_date, mark_absence;
     private EditText search_name1;
     private DAO myDAO;
     private ListView student_view_list;
@@ -52,6 +55,7 @@ public class Class_Info_Activity extends AppCompatActivity {
         add_student1 = findViewById(R.id.add_student);
         del_student1 = findViewById(R.id.delete_student);
         add_date = findViewById(R.id.date_view1);
+        mark_absence = findViewById(R.id.mark_absence_button);
 
 //        setSupportActionBar(student_view_list);
 
@@ -91,6 +95,7 @@ public class Class_Info_Activity extends AppCompatActivity {
             ArrayList<Student> array_student = new ArrayList<>();
             List<List<Integer>> student_list = new ArrayList<>();
             student_list.add(myDAO.getEnrollStudents(Integer.parseInt(offering_id)));
+
 
             for (int i = 0; i < student_list.size(); i++) {
                 List<Integer> list = student_list.get(i);
@@ -170,6 +175,16 @@ public class Class_Info_Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getApplicationContext(), DateRange.class);
+                    intent.putExtra("course_id", course_id1);
+                    intent.putExtra("offer_id", offering_id);
+                    startActivity(intent);
+                }
+            });
+
+            mark_absence.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), MarkAbsenceGuide.class);
                     intent.putExtra("course_id", course_id1);
                     intent.putExtra("offer_id", offering_id);
                     startActivity(intent);
