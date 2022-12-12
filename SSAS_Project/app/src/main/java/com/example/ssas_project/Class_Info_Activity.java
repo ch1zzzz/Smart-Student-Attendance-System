@@ -64,13 +64,6 @@ public class Class_Info_Activity extends AppCompatActivity {
 
         Intent pre_intent = getIntent();
         if(pre_intent.getExtras() == null){
-            back_button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Class_Info_Activity.this, CoursePageActivity.class);
-                    startActivity(intent);
-                }
-            });
         }
         else {
             Bundle bundle = getIntent().getExtras();

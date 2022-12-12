@@ -76,15 +76,4 @@
         android:text="Submit"
         android:textAllCaps="false"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/markabsence_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/markabsence_scroll"
-        android:layout_toRightOf="@+id/markabsence_submit"
-        android:layout_margin="20dp"
-        android:text="Update"
-        android:textAllCaps="false"/>
-
-
 </RelativeLayout>

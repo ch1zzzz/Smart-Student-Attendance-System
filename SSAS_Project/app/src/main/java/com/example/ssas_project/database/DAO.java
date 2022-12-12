@@ -100,7 +100,7 @@ public interface DAO {
     //------------------attendance_table------------------
 
     //get the student's attendance at the time in the courseOffering
-    boolean getAttendance(int student_id, int courseOffering_id, Date date);
+    int getAttendance(int student_id, int courseOffering_id, Date date);
     //get the student's attendance for all time in the courseOffering
     Map<Date, Boolean> getAttendance(int student_id, int courseOffering_id);
     //insert the student's attendance at the time in the courseOffering

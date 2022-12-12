@@ -481,7 +481,7 @@ public class MyDAO implements DAO{
     }
 
     @Override
-    public boolean getAttendance(int student_id, int courseOffering_id, Date date) {
+    public int getAttendance(int student_id, int courseOffering_id, Date date) {
         db = dbHelper.getReadableDatabase();
         DateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String d = iso8601Format.format(date);
@@ -489,12 +489,17 @@ public class MyDAO implements DAO{
         if (cursor.moveToFirst()) {
             do {
                 boolean status = cursor.getInt(cursor.getColumnIndexOrThrow("attendance")) > 0;
-                return status;
+                if(status == true){
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
         Log.i("DAO", "get attendance failed");
-        return false;
+        return 2;
     }
 
     @Override

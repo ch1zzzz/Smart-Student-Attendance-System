@@ -108,11 +108,12 @@ public class StudentData extends AppCompatActivity {
             edit_backbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(StudentData.this, StudentView.class);
-                    intent.putExtra("student_id", student_id);
-                    intent.putExtra("offer_id", offer_id);
-                    intent.putExtra("course_id", course_id);
-                    startActivity(intent);
+//                    Intent intent = new Intent(StudentData.this, StudentView.class);
+//                    intent.putExtra("student_id", student_id);
+//                    intent.putExtra("offer_id", offer_id);
+//                    intent.putExtra("course_id", course_id);
+//                    startActivity(intent);
+                    StudentData.super.onBackPressed();
                 }
             });
 

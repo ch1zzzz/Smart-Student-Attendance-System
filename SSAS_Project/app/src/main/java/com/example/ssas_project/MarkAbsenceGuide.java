@@ -73,15 +73,34 @@ public class MarkAbsenceGuide extends AppCompatActivity{
                     String day = day_text.getText().toString();
                     String hour = hour_text.getText().toString();
                     String minute = minute_text.getText().toString();
+
+//                    Calendar calendar = Calendar.getInstance();
+//                    calendar.set(Integer.parseInt(year),Integer.parseInt(month) - 1,Integer.parseInt(day), Integer.parseInt(hour), Integer.parseInt(minute));
+//                    Date date = calendar.getTime();
+                    List<Date> offering_date = myDAO.getTime(Integer.parseInt(offering_id));
+
+                    //Check if the date enter is correct
+                    boolean status = false;
+                    for(int i = 0; i < offering_date.size(); i ++){
+                        Calendar calendar1 = Calendar.getInstance();
+                        calendar1.setTime(offering_date.get(i));
+                        if(calendar1.get(Calendar.YEAR) == Integer.parseInt(year) && calendar1.get(Calendar.MONTH) == (Integer.parseInt(month) - 1) && calendar1.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(day) && calendar1.get(Calendar.HOUR_OF_DAY) == Integer.parseInt(hour) && calendar1.get(Calendar.MINUTE) == Integer.parseInt(minute)){
+                            status = true;
+                        }
+                    }
+
                     if(year.isEmpty() || month.isEmpty() || day.isEmpty() || hour.isEmpty() || minute.isEmpty()){
                         Toast.makeText(MarkAbsenceGuide.this, "Please enter all the required field!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(status == false){
+                        Toast.makeText(MarkAbsenceGuide.this, "Enter date does not exist", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         Intent intent = new Intent(MarkAbsenceGuide.this, MarkAbsence.class);
                         intent.putExtra("course_id", course_id1);
                         intent.putExtra("offer_id", offering_id);
                         intent.putExtra("year", Integer.parseInt(year));
-                        intent.putExtra("month", Integer.parseInt(month));
+                        intent.putExtra("month", Integer.parseInt(month) - 1);
                         intent.putExtra("dayOfMonth", Integer.parseInt(day));
                         intent.putExtra("hourOfDay", Integer.parseInt(hour));
                         intent.putExtra("minute", Integer.parseInt(minute));

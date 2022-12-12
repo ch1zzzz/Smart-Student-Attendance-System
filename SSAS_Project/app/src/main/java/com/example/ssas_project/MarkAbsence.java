@@ -59,7 +59,7 @@ public class MarkAbsence extends AppCompatActivity {
         //Button
         back_button = findViewById(R.id.markabsence_back);
         submit_button = findViewById(R.id.markabsence_submit);
-        update_button = findViewById(R.id.markabsence_update);
+        //update_button = findViewById(R.id.markabsence_update);
         //Table Layout
         mark_table = findViewById(R.id.markabsence_table);
 
@@ -155,7 +155,7 @@ public class MarkAbsence extends AppCompatActivity {
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             if(buttonView.isChecked()){
                                 student_check.put(id, true);
-                                student_header.setText(String.valueOf(id));
+                                //student_header.setText(String.valueOf(id));
                             }
                             else{
                                 student_check.put(id, false);
@@ -176,17 +176,20 @@ public class MarkAbsence extends AppCompatActivity {
                 public void onClick(View view) {
                     Calendar calendar = Calendar.getInstance();
                     calendar.set(year, 0, dayOfMonth);
-                    Intent intent = new Intent(MarkAbsence.this, MarkAbsenceGuide.class);
-                    //Send Data to next activity
-                    intent.putExtra("offer_id", offer_id);
-                    intent.putExtra("course_id", course_id);
-                    intent.putExtra("month", calendar.get(Calendar.MONTH));
-                    intent.putExtra("year", calendar.get(Calendar.YEAR));
-                    intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
+//                    Intent intent = new Intent(MarkAbsence.this, MarkAbsenceGuide.class);
+//                    //Send Data to next activity
+//                    intent.putExtra("offer_id", offer_id);
+//                    intent.putExtra("course_id", course_id);
+//                    intent.putExtra("month", calendar.get(Calendar.MONTH));
+//                    intent.putExtra("year", calendar.get(Calendar.YEAR));
+//                    intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
                     //Start the next activity
-                    startActivity(intent);
+                    //startActivity(intent);
+                    MarkAbsence.super.onBackPressed();
                 }
             });
+
+
             //Submit the data button
             submit_button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -195,51 +198,65 @@ public class MarkAbsence extends AppCompatActivity {
                     calendar.set(year, month, dayOfMonth, hourOfDay, minute, 0);
                     Date date = calendar.getTime();
 
-                    //Mark Attendance to the Database
-                    for(Map.Entry<Integer, Boolean> entry : student_check.entrySet()){
-                        myDAO.insertAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
-                    }
-                    Intent intent = new Intent(MarkAbsence.this, Class_Info_Activity.class);
-                    //Send Data to next activity
-                    intent.putExtra("offer_id", offer_id);
-                    intent.putExtra("course_id", course_id);
-                    intent.putExtra("month", calendar.get(Calendar.MONTH));
-                    intent.putExtra("year", calendar.get(Calendar.YEAR));
-                    intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
-                    intent.putExtra("hourOfDay", hourOfDay);
-                    intent.putExtra("minute", minute);
-                    //Start the next activity
-                    startActivity(intent);
+                    Map<Date, Boolean> offering_map = new HashMap<>();
 
-                }
-            });
-
-            //Update the data button
-            update_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.set(year, month, dayOfMonth, hourOfDay, minute, 0);
-                    Date date = calendar.getTime();
+                    //List all the dates of the data for students
+//                    for(Map.Entry<Integer, Boolean> entry : student_check.entrySet()){
+//                        offering_map = myDAO.getAttendance(entry.getKey(), Integer.parseInt(offer_id));
+//                    }
 
                     //Mark Attendance to the Database
                     for(Map.Entry<Integer, Boolean> entry : student_check.entrySet()){
-                        myDAO.updateAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
+                        //offering_map = myDAO.getAttendance(entry.getKey(), Integer.parseInt(offer_id));
+                        if(myDAO.getAttendance(entry.getKey(), Integer.parseInt(offer_id), date) == 2){
+                            myDAO.insertAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
+                        }
+                        else{
+                            myDAO.updateAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
+                        }
                     }
-                    Intent intent = new Intent(MarkAbsence.this, Class_Info_Activity.class);
-                    //Send Data to next activity
-                    intent.putExtra("offer_id", offer_id);
-                    intent.putExtra("course_id", course_id);
-                    intent.putExtra("month", month);
-                    intent.putExtra("year", year);
-                    intent.putExtra("dayOfMonth", dayOfMonth);
-                    intent.putExtra("hourOfDay", hourOfDay);
-                    intent.putExtra("minute", minute);
-
-                    //Start the next activity
-                    startActivity(intent);
+//                    Intent intent = new Intent(MarkAbsence.this, Class_Info_Activity.class);
+//                    //Send Data to next activity
+//                    intent.putExtra("offer_id", offer_id);
+//                    intent.putExtra("course_id", course_id);
+//                    intent.putExtra("month", calendar.get(Calendar.MONTH));
+//                    intent.putExtra("year", calendar.get(Calendar.YEAR));
+//                    intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
+//                    intent.putExtra("hourOfDay", hourOfDay);
+//                    intent.putExtra("minute", minute);
+//                    //Start the next activity
+//                    startActivity(intent);
+                    MarkAbsence.super.onBackPressed();
                 }
             });
+
+//            //Update the data button
+//            update_button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Calendar calendar = Calendar.getInstance();
+//                    calendar.set(year, month, dayOfMonth, hourOfDay, minute, 0);
+//                    Date date = calendar.getTime();
+//
+//                    //Mark Attendance to the Database
+//                    for(Map.Entry<Integer, Boolean> entry : student_check.entrySet()){
+//                        myDAO.updateAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
+//                    }
+////                    Intent intent = new Intent(MarkAbsence.this, Class_Info_Activity.class);
+////                    //Send Data to next activity
+////                    intent.putExtra("offer_id", offer_id);
+////                    intent.putExtra("course_id", course_id);
+////                    intent.putExtra("month", month);
+////                    intent.putExtra("year", year);
+////                    intent.putExtra("dayOfMonth", dayOfMonth);
+////                    intent.putExtra("hourOfDay", hourOfDay);
+////                    intent.putExtra("minute", minute);
+////
+////                    //Start the next activity
+////                    startActivity(intent);
+//                    MarkAbsence.super.onBackPressed();
+//                }
+//            })
 
         }
     }

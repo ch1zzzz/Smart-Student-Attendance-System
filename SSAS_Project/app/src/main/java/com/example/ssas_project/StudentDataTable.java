@@ -144,11 +144,12 @@ public class StudentDataTable extends AppCompatActivity {
             edit_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(StudentDataTable.this, StudentData.class);
-                    intent.putExtra("student_id", student_id);
-                    intent.putExtra("offer_id", offer_id);
-                    intent.putExtra("course_id", course_id);
-                    startActivity(intent);
+//                    Intent intent = new Intent(StudentDataTable.this, StudentData.class);
+//                    intent.putExtra("student_id", student_id);
+//                    intent.putExtra("offer_id", offer_id);
+//                    intent.putExtra("course_id", course_id);
+//                    startActivity(intent);
+                    StudentDataTable.super.onBackPressed();
                 }
             });
 
