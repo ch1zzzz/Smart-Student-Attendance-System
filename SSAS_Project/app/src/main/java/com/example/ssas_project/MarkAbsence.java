@@ -177,7 +177,7 @@ public class MarkAbsence extends AppCompatActivity {
                     calendar.set(year, 0, dayOfMonth);
 
 
-                    Intent intent = new Intent(MarkAbsence.this, StudentIDLookup.class);
+                    Intent intent = new Intent(MarkAbsence.this, CalendarActivity.class);
                     //Send Data to next activity
                     intent.putExtra("offer_id", offer_id);
                     intent.putExtra("month", calendar.get(Calendar.MONTH));

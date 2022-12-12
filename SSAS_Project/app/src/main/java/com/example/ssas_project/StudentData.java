@@ -61,6 +61,7 @@ public class StudentData extends AppCompatActivity {
             Bundle bundle = getIntent().getExtras();
             String offer_id = bundle.getString("offer_id");
             String student_id = bundle.getString("student_id");
+            String course_id = bundle.getString("course_id");
 
             String str1 = String.format("Course Offering ID: %s", offer_id);
             edit_offer_id.setText(str1);
@@ -103,6 +104,7 @@ public class StudentData extends AppCompatActivity {
                     Intent intent = new Intent(StudentData.this, StudentView.class);
                     intent.putExtra("student_id", student_id);
                     intent.putExtra("offer_id", offer_id);
+                    intent.putExtra("course_id", course_id);
                     startActivity(intent);
                 }
             });

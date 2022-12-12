@@ -93,6 +93,7 @@ public class StudentView extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), StudentData.class);
                     intent.putExtra("offer_id", String.valueOf(array_courseoffering.get(position).getId()));
                     intent.putExtra("student_id", search_id);
+                    intent.putExtra("course_id", course_id);
                     startActivity(intent);
                 }
             });
