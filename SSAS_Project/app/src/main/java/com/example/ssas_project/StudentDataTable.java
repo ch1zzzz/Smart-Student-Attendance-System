@@ -64,7 +64,7 @@ public class StudentDataTable extends AppCompatActivity {
             Bundle bundle = getIntent().getExtras();
             String offer_id = bundle.getString("offer_id");
             String student_id = bundle.getString("student_id");
-
+            String course_id = bundle.getString("course_id");
             //Set Course ID Text
             String str1 = String.format("Course Offering ID: %s", offer_id);
             edit_offer_id.setText(str1);
@@ -147,6 +147,7 @@ public class StudentDataTable extends AppCompatActivity {
                     Intent intent = new Intent(StudentDataTable.this, StudentData.class);
                     intent.putExtra("student_id", student_id);
                     intent.putExtra("offer_id", offer_id);
+                    intent.putExtra("course_id", course_id);
                     startActivity(intent);
                 }
             });

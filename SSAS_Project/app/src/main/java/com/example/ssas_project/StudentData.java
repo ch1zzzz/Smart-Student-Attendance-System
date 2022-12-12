@@ -55,6 +55,13 @@ public class StudentData extends AppCompatActivity {
         //Retrieve ID from the last activity
         Intent pre_intent = getIntent();
         if(pre_intent.getExtras() == null){
+            edit_backbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(StudentData.this, CalendarActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
         else{
             //Retrieve value from last activity

@@ -58,6 +58,8 @@ public class StudentSearchActivity extends AppCompatActivity{
                         if(s1 != null){
                             Intent intent = new Intent(StudentSearchActivity.this,StudentView.class);
                             intent.putExtra("student_id", student_id);
+                            intent.putExtra("course_id", course_id1);
+                            intent.putExtra("offer_id", offer_id1);
                             startActivity(intent);
                         }
                         else{
