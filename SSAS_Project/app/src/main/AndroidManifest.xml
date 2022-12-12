@@ -167,6 +167,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".MarkAbsenceGuide"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.ssas_project.provider"

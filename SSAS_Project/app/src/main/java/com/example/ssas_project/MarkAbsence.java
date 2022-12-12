@@ -71,6 +71,7 @@ public class MarkAbsence extends AppCompatActivity {
             //Retrieve value from last activity
             Bundle bundle = getIntent().getExtras();
             String offer_id = bundle.getString("offer_id");
+            String course_id = bundle.getString("course_id");
 
             //Get the Date key
             int month = bundle.getInt("month");
@@ -175,11 +176,10 @@ public class MarkAbsence extends AppCompatActivity {
                 public void onClick(View view) {
                     Calendar calendar = Calendar.getInstance();
                     calendar.set(year, 0, dayOfMonth);
-
-
-                    Intent intent = new Intent(MarkAbsence.this, CalendarActivity.class);
+                    Intent intent = new Intent(MarkAbsence.this, MarkAbsenceGuide.class);
                     //Send Data to next activity
                     intent.putExtra("offer_id", offer_id);
+                    intent.putExtra("course_id", course_id);
                     intent.putExtra("month", calendar.get(Calendar.MONTH));
                     intent.putExtra("year", calendar.get(Calendar.YEAR));
                     intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
@@ -199,10 +199,10 @@ public class MarkAbsence extends AppCompatActivity {
                     for(Map.Entry<Integer, Boolean> entry : student_check.entrySet()){
                         myDAO.insertAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
                     }
-
-                    Intent intent = new Intent(MarkAbsence.this, CalendarActivity.class);
+                    Intent intent = new Intent(MarkAbsence.this, Class_Info_Activity.class);
                     //Send Data to next activity
                     intent.putExtra("offer_id", offer_id);
+                    intent.putExtra("course_id", course_id);
                     intent.putExtra("month", calendar.get(Calendar.MONTH));
                     intent.putExtra("year", calendar.get(Calendar.YEAR));
                     intent.putExtra("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH));
@@ -226,10 +226,10 @@ public class MarkAbsence extends AppCompatActivity {
                     for(Map.Entry<Integer, Boolean> entry : student_check.entrySet()){
                         myDAO.updateAttendance(entry.getKey(), Integer.parseInt(offer_id), date, entry.getValue());
                     }
-
-                    Intent intent = new Intent(MarkAbsence.this, CalendarActivity.class);
+                    Intent intent = new Intent(MarkAbsence.this, Class_Info_Activity.class);
                     //Send Data to next activity
                     intent.putExtra("offer_id", offer_id);
+                    intent.putExtra("course_id", course_id);
                     intent.putExtra("month", month);
                     intent.putExtra("year", year);
                     intent.putExtra("dayOfMonth", dayOfMonth);
