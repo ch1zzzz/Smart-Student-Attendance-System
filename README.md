@@ -6,3 +6,6 @@ apk link: https://drive.google.com/file/d/1I6yiMFXL-NzrxTkZ1ZixG1s3JdBCTasl/view
 
 Database Structure Designing:
 ![image](https://user-images.githubusercontent.com/34596838/223746217-f63d65eb-8e40-4e7e-bb5a-207348aa618d.png)
+
+<iframe src="SSAS Software Design Documentation.docx.pdf" width="100%" height="600px">
+
