@@ -7,5 +7,5 @@ apk link: https://drive.google.com/file/d/1I6yiMFXL-NzrxTkZ1ZixG1s3JdBCTasl/view
 Database Structure Designing:
 ![image](https://user-images.githubusercontent.com/34596838/223746217-f63d65eb-8e40-4e7e-bb5a-207348aa618d.png)
 
-<iframe src="SSAS Software Design Documentation.docx.pdf" width="100%" height="600px">
+[SSDA](https://github.com/ch1zzzz/Smart-Student-Attendance-System/blob/f2b6c099ddc360b26859886b37e193b2c3229879/Team3-SSAS-SRS.pdf)
 
